@@ -1,0 +1,41 @@
+ion-toolbar{
+   --background: none;
+   background-color: #0D0D0D;
+}
+h1{
+    color: #FFFF;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+}
+ion-content{
+    --background: none;
+    background-color: #FFE6BF;
+    width: 100%;
+}
+form{
+    padding: 45px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+ion-item{
+    --background: none;
+    background-color: #FFE6BF;
+    color: black;
+}
+ion-label{
+    --background: none;
+    background-color: #FFE6BF;
+    font-size: 10px;
+}
+ion-button{
+    --background: none;
+    background-color: #A66F74;
+    color: black;
+    font-weight: bold;
+    border-bottom: none;
+}
+p {
+    color: black;
+}

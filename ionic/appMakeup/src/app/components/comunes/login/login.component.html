@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><h1>Accede a tu cuenta</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="entrar">
+  <form form="ngForm" (ngSubmit)="login(form)" method="post">
+    <ion-item>
+      <ion-label position="floating">Dirección de correo electrónico</ion-label>
+      <ion-input ngModel type="email" name="email"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input ngModel type="password" name="password"></ion-input>
+    </ion-item>
+  
+    <p text-right>¿Olvidaste la contraseña?</p>
+  
+    <ion-button class="entrar">ENTRAR</ion-button>
+  
+    <p text-center>¿Aún no estás registrado? Utiliza esta opción para acceder al formulario de registro.</p>
+    <ion-button class="nueva">CREAR UNA CUENTA</ion-button>
+  </form>
+</ion-content>

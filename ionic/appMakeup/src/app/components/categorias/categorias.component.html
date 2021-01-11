@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-card *ngFor="let categoria of categorias">
+    <ion-card-header>
+      <img src="http://makeup.test/makeup/public/img/categorias/{{categoria.logo}}" alt="">
+      <ion-card-title><h1>{{ categoria.nombre_categoria }}</h1></ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+<p>
+  categorias works!
+</p>

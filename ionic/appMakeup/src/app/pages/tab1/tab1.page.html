@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <h2>Listado de Marcas</h2>
+  <ion-list *ngFor="let marca of marcas" >
+    <ion-item>
+      <ion-label>
+        {{ marca.nombre_marca }}
+      </ion-label>
+      <ion-select>
+        <ion-select-option *ngFor="let articulo of marca.articulos" >
+          {{ articulo.nombre_articulo }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

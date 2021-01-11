@@ -1,0 +1,8 @@
+<ion-list *ngFor="let marca of marcas">
+  <ion-item>
+    <ion-thumbnail item-start>
+      <img src="http://makeup.test/makeup/public/img/marcas/{{marca.logo}}" alt="">
+    </ion-thumbnail>
+    <h2>{{ marca.nombre_marca }}</h2>
+  </ion-item>
+</ion-list>
