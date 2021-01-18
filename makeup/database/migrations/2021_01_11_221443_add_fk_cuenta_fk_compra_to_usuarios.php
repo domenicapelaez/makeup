@@ -14,8 +14,8 @@ class AddFkCuentaFkCompraToUsuarios extends Migration
     public function up()
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            $table->foreign('cuentaid')
-            ->references('cuentaid')->on('cuentas')
+            $table->foreign('id')
+            ->references('id')->on('cuentas')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

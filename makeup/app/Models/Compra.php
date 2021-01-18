@@ -10,6 +10,6 @@ class Compra extends Model
     use HasFactory;
     protected $table = 'compras';
     protected $primarykey = 'compraid';
-    protected $fillable = ['compraid','fecha','importe','estado','created_at','updated_at'];
+    protected $fillable = ['compraid',,'articuloid','cantidad','fecha','descuento','importe','estado','created_at','updated_at'];
     public $timestamps = true;
 }

@@ -1,3 +1,31 @@
-<p>
-  new works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title><h1>REGISTRO</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellidos</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-button type="submit">GUARDAR</ion-button>
+  </form>
+</ion-content>

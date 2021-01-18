@@ -26,11 +26,14 @@ ion-item{
 }
 ion-label{
     --background: none;
+    --background-activated: none;
+    --background-hover: none;
     background-color: #FFE6BF;
     font-size: 10px;
 }
 ion-button{
     --background: none;
+    --background-activated: none;
     background-color: #A66F74;
     color: black;
     font-weight: bold;

@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Authenticatable {
-
+class Cuenta extends Authenticatable
+{
     use HasFactory;
     use HasApiTokens;
-    protected $table = 'usuarios';
-    protected $primarykey = 'userid';
-    protected $fillable = ['userid','nombre','apellidos','telefono','ciudad','codigopostal','cuentaid','compraid','created_at','updated_at'];
+    protected $table = 'cuentas';
+    protected $primarykey = 'id';
+    protected $fillable = ['id','rol','nombre','apellidos','email','pass','created_at','updated_at'];
     public $timestamps = true;
 }

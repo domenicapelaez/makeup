@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/comunes/home/home.component';
 import { LoginComponent } from './components/comunes/login/login.component';
+import { NewComponent } from './components/comunes/new/new.component';
 import { MenuComponent } from './components/comunes/menu/menu.component';
 import { LikeComponent } from './components/comunes/like/like.component';
 import { ContactoComponent } from './components/comunes/contacto/contacto.component';
+import { CuentaComponent } from './components/comunes/cuenta/cuenta.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +27,12 @@ const routes: Routes = [
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'new', component: NewComponent
+  },
+  {
+    path: 'cuenta', component: CuentaComponent
   },
   {
     path: 'menu', component: MenuComponent

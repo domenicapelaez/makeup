@@ -14,12 +14,12 @@ class CreateCuentasTable extends Migration
     public function up()
     {
         Schema::create('cuentas', function (Blueprint $table) {
-            $table->smallInteger('cuentaid')->primary();
+            $table->smallInteger('id')->primary();
             $table->enum('rol',['invitado','usuario','administrador']);
             $table->string('nombre',100);
             $table->string('apellidos',100);
             $table->string('email',100);
-            $table->string('pass',8);
+            $table->string('pass',250);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

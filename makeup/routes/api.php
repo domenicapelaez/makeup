@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\CategoriasController;
 use App\Http\Controllers\admin\MarcasController;
 use App\Http\Controllers\admin\ArticulosController;
 use App\Http\Controllers\admin\UsuariosController;
+use App\Http\COntrollers\admin\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,11 @@ Route::resource('admin/marcas', MarcasController::class);
 Route::resource('admin/articulos', ArticulosController::class);
 
 Route::resource('admin/usuarios', UsuariosController::class);
+
+Route::post('login', [AuthController::class, 'login']);
+
+Route::post('registro', [AuthController::class, 'registro']);
+
+Route::post('logout', [AuthController::class, 'logout']);
+
+Route::post('user', [AuthController::class, 'getUser']);
