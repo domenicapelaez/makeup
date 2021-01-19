@@ -13,6 +13,6 @@ class Cuenta extends Authenticatable
     use HasApiTokens;
     protected $table = 'cuentas';
     protected $primarykey = 'id';
-    protected $fillable = ['id','rol','nombre','apellidos','email','pass','created_at','updated_at'];
+    protected $fillable = ['id','rol','nombre','apellidos','email','password','created_at','updated_at'];
     public $timestamps = true;
 }

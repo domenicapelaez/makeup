@@ -21,7 +21,7 @@ class AuthController extends Controller
             'nombre'      => 'required',
             'apellidos'   => 'required',
             'email'       => 'required',
-            'pass'        => 'required',
+            'password'        => 'required',
         ];
         #Paso1-. Validación de los campos del usuario
         $input = $request->all();
@@ -46,7 +46,7 @@ class AuthController extends Controller
             'nombre'        => $request->input('nombre'),
             'apellidos'     => $request->input('apellidos'),
             'email'         => $request->input('email'),
-            'pass'          => bcrypt($request->pass)
+            'password'          => bcrypt($request->password)
         ));
 
         $cuenta['id'] = (int)($request->input('id'));
@@ -125,4 +125,26 @@ class AuthController extends Controller
 
     }
 
+    public function getUser(Request $request) {
+       // dd("datos de usuario");
+        //$user = $request->user();
+          
+        $user = Auth::user();
+         // $usuario = User::where('id', $user->id)->with('cliente')->get();
+          //$usuario = User::with('cliente')->find($user->id); *Modifica con datos de mi bbdd R 1:1 
+          return  response()->json([
+              'status' => 'success',
+              'message' => 'Datos del usuario',
+              'code' => 401,
+              'user' => $user
+          ]); 
+          }
+          
+    public function logout(Request $request){
+            //elimina el token de oauth_access_token.
+            $request->user()->token()->revoke();
+            return  response()->json([
+                'message' => 'Sesión finalizada con éxito',
+            ]);
+        }      
 }

@@ -35,6 +35,15 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('registro', [AuthController::class, 'registro']);
 
-Route::post('logout', [AuthController::class, 'logout']);
+/*
+Route::get('user', [AuthController::class, 'getUser'])
+    ->middleware('auth:api');
 
-Route::post('user', [AuthController::class, 'getUser']);
+Route::post('logout', [AuthController::class, 'logout'])
+    ->middleware('auth:api');
+*/
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('user', [AuthController::class, 'getUser']);
+});

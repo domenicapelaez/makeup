@@ -1,12 +1,22 @@
-ion-content{
+ion-content {
     --background: none;
     background-color: #FFE6BF;
+    margin: auto;
+    padding-top: 20px;
 }
-ion-segment-button {
-    --background: none;
-    background-color: white;
+ion-card {
+      position: relative;
+      text-align: center;
+      width: auto;
+      border: 1px solid black;
 }
-ion-label {
-    color: black;
-    font-weight: bold;
+  
+ion-card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: black;
+      text-shadow:  5px 5px 10px rgb(255, 255, 255);
 }

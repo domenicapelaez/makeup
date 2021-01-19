@@ -1,12 +1,13 @@
 <app-header></app-header>
 
 <ion-content>
-  <ion-segment>
-    <ion-segment-button value="categorias">
-      <ion-label>Categorias</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="marcas">
-      <ion-label>Marcas</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <ion-card>
+    <img src="assets/img/menu/categorias.png"/>
+    <ion-card-title routerLink="/categorias">Categorías</ion-card-title>
+  </ion-card>
+
+  <ion-card>
+    <img src="assets/img/menu/marcas.png"/>
+    <ion-card-title routerLink="/marcas">Marcas</ion-card-title>
+  </ion-card>
 </ion-content>
