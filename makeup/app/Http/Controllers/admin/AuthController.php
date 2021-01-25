@@ -21,7 +21,7 @@ class AuthController extends Controller
             'nombre'      => 'required',
             'apellidos'   => 'required',
             'email'       => 'required',
-            'password'        => 'required',
+            'password'    => 'required',
         ];
         #Paso1-. Validación de los campos del usuario
         $input = $request->all();
@@ -46,7 +46,7 @@ class AuthController extends Controller
             'nombre'        => $request->input('nombre'),
             'apellidos'     => $request->input('apellidos'),
             'email'         => $request->input('email'),
-            'password'          => bcrypt($request->password)
+            'password'      => bcrypt($request->password)
         ));
 
         $cuenta['id'] = (int)($request->input('id'));

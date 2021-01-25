@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComunesModule } from './components/comunes/comunes.module';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { ComunesModule } from './components/comunes/comunes.module';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     HttpClientModule,
-    ComunesModule],
+    ComunesModule,
+    FormsModule],
     
   providers: [
     StatusBar,
