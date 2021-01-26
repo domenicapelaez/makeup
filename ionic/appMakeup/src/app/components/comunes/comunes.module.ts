@@ -1,4 +1,3 @@
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -12,16 +11,30 @@ import { NewComponent } from './new/new.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { LikeComponent } from './like/like.component';
 import { MenuComponent } from './menu/menu.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HeaderComponent,HomeComponent,LoginComponent,CuentaComponent,NewComponent,ContactoComponent,LikeComponent,MenuComponent],
-  exports: [HeaderComponent,HomeComponent,LoginComponent,CuentaComponent,NewComponent,ContactoComponent,LikeComponent,MenuComponent],
+  declarations: [HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+    CuentaComponent,
+    NewComponent,
+    ContactoComponent,
+    LikeComponent,
+    MenuComponent],
+  exports: [HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+    CuentaComponent,
+    NewComponent,ContactoComponent,
+    LikeComponent,
+    MenuComponent],
   imports: [
     CommonModule,
     IonicModule,
     ComunesRoutingModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ComunesModule { }

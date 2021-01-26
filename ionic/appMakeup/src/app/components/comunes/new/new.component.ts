@@ -21,10 +21,9 @@ export class NewComponent implements OnInit {
   }
 
   constructor(private uService: CuentaService,
-              private NavController: NavController,
-   ) { }
+              private NavController: NavController) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
    async registro(fRegistro) {
 

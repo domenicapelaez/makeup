@@ -11,17 +11,22 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ComunesModule } from './components/comunes/comunes.module';
 import { FormsModule } from '@angular/forms';
+import { FiltroPipe } from './pipes/filtro.pipe';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FiltroPipe],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
     HttpClientModule,
     ComunesModule,
-    FormsModule],
+    FormsModule,
+    IonicStorageModule.forRoot()
+  ],
     
   providers: [
     StatusBar,
