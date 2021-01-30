@@ -27,7 +27,10 @@ export class NewComponent implements OnInit {
 
    async registro(fRegistro) {
 
-    if (fRegistro.invalid) { return; }
+    if (fRegistro.invalid) { 
+      console.log('error en datos');
+    
+      return; }
     
     const peticion = await this.uService.registro( this.newuser);
     

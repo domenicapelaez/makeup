@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   url:'http://makeup.test/makeup'
+  //url:'http://161.97.178.5/makeup/api/makeup/public/index.php'
 };
 
 /*
+
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *
