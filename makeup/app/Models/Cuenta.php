@@ -15,4 +15,8 @@ class Cuenta extends Authenticatable
     protected $primarykey = 'id';
     protected $fillable = ['id','rol','nombre','apellidos','email','password','created_at','updated_at'];
     public $timestamps = true;
+
+    public function usuario() {
+        return $this->hasMany(Usuario::class,'id');
+    }
 }

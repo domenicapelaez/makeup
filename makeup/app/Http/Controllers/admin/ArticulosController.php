@@ -16,8 +16,8 @@ class ArticulosController extends Controller
      */
     public function index()
     {
-        $dspproductos = dspProducto::all();         
-        return  response()->json($dspproductos);
+        $articulos = Articulo::all();         
+        return  response()->json($articulos);
     }
 
     /**
