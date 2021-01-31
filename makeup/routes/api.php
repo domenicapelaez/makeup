@@ -4,7 +4,7 @@ use App\Http\Controllers\admin\CategoriasController;
 use App\Http\Controllers\admin\MarcasController;
 use App\Http\Controllers\admin\ArticulosController;
 use App\Http\Controllers\admin\UsuariosController;
-use App\Htpp\Controllers\admin\CuentasController;
+use App\Http\Controllers\admin\CuentasController;
 use App\Http\COntrollers\admin\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
