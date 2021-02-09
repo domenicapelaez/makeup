@@ -14,10 +14,16 @@ class ArticulosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $articulos = Articulo::all();         
-        return  response()->json($articulos);
+        $articulos = Articulo::with('marcas','categorias')->get();         
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Articulos de la Marca' ,
+            'code' => 401,
+            'data' => $articulos
+        ]);
     }
 
     /**

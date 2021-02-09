@@ -14,23 +14,22 @@ const URL = environment.url;
 export class ArticulosComponent implements OnInit {
 
   public marcaid: string;
+  public marcas: IMarca;
   public marca: IMarca;
-  public articulos: IArticulo;
-
-  public bread: [
-    {
-      'nombre': 'Marcas', 'clase': 'active', 'link': [ '/', 'marcas']
-    }
-  ];
+  public articulos: IArticulo[];
 
   constructor(private route: ActivatedRoute,
-              private mService: MarcasService) { }
+              private mService: MarcasService) { 
+              }
 
  async ngOnInit() {
-    this.marcaid = this.route.snapshot.paramMap.get('marcaid');
+    this.marcaid = this.route.snapshot.paramMap.get('articulo_id');
     let respuesta = await this.mService.getArticulos(this.marcaid);
+    //console.log('articulos');
     if (respuesta.status == 'success'){
-      this.marca = respuesta.data;
+      this.marca = respuesta.data[0];
+      //console.log(this.marca);
+      console.log(this.marcas);
     }
   }
 

@@ -13,23 +13,16 @@ const URL = environment.url;
 })
 export class ArticulosComponent implements OnInit {
 
-
-  public categoriaid: string;
+  public catid: string;
   public categoria: ICategoria;
-  public articulos: IArticulo;
-
-  public bread: [
-    {
-      'nombre': 'Categorias', 'clase': 'active', 'link': [ '/', 'categorias']
-    }
-  ];
+  public articulos: IArticulo[];
 
   constructor(private route: ActivatedRoute,
               private cService: CategoriasService) { }
 
  async ngOnInit() {
-    this.categoriaid = this.route.snapshot.paramMap.get('categoriaid');
-    let respuesta = await this.cService.getArticulos(this.categoriaid);
+    this.catid = this.route.snapshot.paramMap.get('articulo_id');
+    let respuesta = await this.cService.getArticulos(this.catid);
     if (respuesta.status == 'success'){
       this.categoria = respuesta.data;
     }

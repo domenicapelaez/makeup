@@ -13,12 +13,11 @@ class Articulo extends Model
     protected $fillable = ['articulo_id','nombre_articulo','descripcion','categoriaid',
     'marcaid','precio','imagen','created_at','updated_at'];
     public $timestamps = true;
-/*
-    public function marca(){
+
+    public function marcas(){
         return $this->belongsTo(Marca::class,'marcaid', 'marcaid');
     }
-    public function categoria(){
+    public function categorias(){
         return $this->belongsTo(Categoria::class,'categoriaid', 'categoriaid');
     }
-    */
 }

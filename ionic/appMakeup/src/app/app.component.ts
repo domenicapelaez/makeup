@@ -1,3 +1,4 @@
+import { MarcasService } from 'src/app/services/marcas.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform, NavController } from '@ionic/angular';
@@ -8,6 +9,7 @@ import { CuentasService } from './services/cuentas.service';
 import { Router } from '@angular/router';
 import { ICuenta } from './interfaces/CuentaInterface';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,6 +18,7 @@ import { ICuenta } from './interfaces/CuentaInterface';
 export class AppComponent implements OnInit {
 
   categorias: any;
+  marcas: any;
   cuenta: ICuenta;
 
   constructor(
@@ -23,6 +26,7 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private catServices: CategoriasService,
+    private marService: MarcasService,
     private cService: CuentasService,
     private navCtrl: NavController,
     private router: Router
@@ -37,9 +41,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  mostrarArticulos(c){
-    console.log(c);
-    this.router.navigate(["/categorias",{ outlets: {'primary': ["articulos", c] }} ]).then(nav => {
+  mostrarArticulos(m){
+    console.log(m);
+    this.router.navigate(["/marcas",{ outlets: {'primary': ["articulos",m] }} ]).then(nav => {
       console.log(nav);
     }, err => {
       console.log(err)

@@ -26,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('admin/categorias', CategoriasController::class);
 
-Route::resource('admin/marcas', MarcasController::class);
+//Route::resource('admin/marcas1', MarcasController::class);
 
 Route::resource('admin/articulos', ArticulosController::class);
 
@@ -46,12 +46,9 @@ Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api');
 */
 
-<<<<<<< HEAD
-Route::post('marcas', [MarcasController::class, 'marcas']);
+Route::post('marcas', [ArticulosController::class, 'marcas']);
 
-Route::post('categorias', [CategoriasController::class, 'categorias']);
-=======
->>>>>>> f9f2f0966357c5e9d6173b03bcc5d40b0e8ad9e4
+Route::post('categorias', [ArticulosController::class, 'categorias']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [AuthController::class, 'logout']);

@@ -16,19 +16,21 @@ class MarcasController extends Controller
      */
 
     public function getArticulos($marcaid){
-        $articulos = Marca::with('articulos')->where('Marca', '=', $marcaid)->get();
+
+        $articulos = Marca::with('articulos')->where('marcaid', '=', $marcaid)->get();
         return  response()->json([
             'status' => 'success',
             'message' => 'Articulos de la Marca '. $marcaid ,
             'code' => 401,
-            'data' => $articulos
+            'data' => $articulos[0]
         ]);
     }
 
  public function index()
     {
        // $marcas = Marca::with('articulos')->get();
-        $marcas = Marca::with('articulos')->get();
+     $marcas = Marca::with('articulos')->get();
+      //  $marcas = Marca::all();
         return  response()->json([
             'status' => 'success',
             'message' => 'Marcas de la tienda',

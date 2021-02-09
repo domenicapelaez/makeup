@@ -16,7 +16,8 @@ class CategoriasController extends Controller
      */
 
     public function getArticulos($categoriaid){
-        $articulos = Categoria::with('articulos')->where('Categoria', '=', $categoriaid)->get();
+
+        $articulos = Categoria::with('articulos')->where('categoriaid', '=', $categoriaid)->get();
         return  response()->json([
             'status' => 'success',
             'message' => 'Articulos de la Categoria '. $categoriaid ,

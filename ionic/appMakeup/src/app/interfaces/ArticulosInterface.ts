@@ -10,6 +10,7 @@ export interface IArticulo {
 export interface ICategoria {
     categoriaid?: number;
     nombre_categoria?: string;
+    articulos?: IArticulo;
 }
 
 type CCategorias = ICategoria[] | ICategoria;
@@ -25,6 +26,7 @@ export interface MsnApiCategorias {
 export interface IMarca {
     marcaid?: number;
     nombre_marca?: string;
+    articulos?: IArticulo[];
 }
 
 type MMarcas = IMarca[] | IMarca;
@@ -33,7 +35,7 @@ export interface MsnApiMarcas {
     message?: string;
     errors?: string;
     code?: number;
-    data?: IMarca;
+    data?: IMarca[];
 //    data?: M;
 }
 
@@ -42,6 +44,6 @@ export interface MsnApiArticulos {
     message?: string;
     errors?: string;
     code?: number;
-//    data?: IMarca[] | IArticulo[];
+    //data?: IMarca[] | IArticulo[];
     data?: IArticulo[] | IArticulo | IMarca | IMarca[];
 }

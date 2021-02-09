@@ -8,6 +8,7 @@ import { LikeComponent } from './components/comunes/like/like.component';
 import { ContactoComponent } from './components/comunes/contacto/contacto.component';
 import { CuentaComponent } from './components/comunes/cuenta/cuenta.component';
 import { UsuarioComponent } from './components/comunes/usuario/usuario.component';
+import { CompraComponent } from './components/comunes/compra/compra.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'marcas',
+    path: 'marcas', outlet: 'primary',
     loadChildren: () => import('./components/marcas/marcas.module').then(m => m.MarcasModule)
   },
   {
@@ -46,6 +47,9 @@ const routes: Routes = [
   },
   {
     path: 'usuario', component: UsuarioComponent
+  },
+  {
+    path: 'compra', component: CompraComponent
   }
 ];
 @NgModule({

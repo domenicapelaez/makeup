@@ -13,18 +13,19 @@ const URL = environment.url;
 })
 export class MarcasComponent implements OnInit {
 
-  marcas: IMarca;
+  marcas: IMarca[];
   marca: any;
 
   constructor(private marcasService: MarcasService, private route: ActivatedRoute) { 
-    this.marca = this.route.snapshot.paramMap.get('marcaid');
-    console.log (this.marca);
+    this.marca = this.route.snapshot.paramMap.get('articulo_id');
+   console.log (this.marca);
     console.log(this.marcasService.getMarcas());
   }
 
   async ngOnInit() {
     let respuesta = await this.marcasService.getMarcas();
     if (respuesta.status == 'success'){
+      console.log(respuesta);
       this.marcas = respuesta.data;
       console.log(this.marcas);
     }
@@ -32,6 +33,8 @@ export class MarcasComponent implements OnInit {
 
   async ionViewWillEnter (){
     let respuesta = await this.marcasService.getMarcas();
+    console.log(respuesta);
+
     if (respuesta.status == 'success'){
       this.marcas = respuesta.data;
     }

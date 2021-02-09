@@ -1,3 +1,4 @@
+import { CompraComponent } from './compra/compra.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -24,7 +25,9 @@ import { UsuarioComponent } from './usuario/usuario.component';
     ContactoComponent,
     LikeComponent,
     MenuComponent,
-    UsuarioComponent],
+    UsuarioComponent,
+    CompraComponent],
+
   exports: [HeaderComponent,
     HomeComponent,
     LoginComponent,
@@ -33,7 +36,9 @@ import { UsuarioComponent } from './usuario/usuario.component';
     ContactoComponent,
     LikeComponent,
     MenuComponent,
-    UsuarioComponent],
+    UsuarioComponent,
+    CompraComponent],
+
   imports: [
     CommonModule,
     IonicModule,

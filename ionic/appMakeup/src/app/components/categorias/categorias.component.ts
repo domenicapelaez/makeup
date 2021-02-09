@@ -17,7 +17,7 @@ export class CategoriasComponent implements OnInit {
   categoria: any;
 
   constructor(private categoriasService: CategoriasService, private route: ActivatedRoute) {
-    this.categoria = this.route.snapshot.paramMap.get('categoriaid');
+    this.categoria = this.route.snapshot.paramMap.get('articulo_id');
     console.log (this.categoria);
     console.log(this.categoriasService.getCategorias());
    }

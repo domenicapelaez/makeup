@@ -27,15 +27,16 @@ export class MarcasService {
     };
   }
 
-  async getArticulos(articulo_id):Promise<MsnApiMarcas>{
+  async getArticulos(marcaid):Promise<MsnApiMarcas>{
+    console.log("marcaid = ",marcaid);
     const token = await this.cService.getToken();
-    const ruta = `${ URL }/public/api/admin/marcas/${articulo_id}/articulos`;
+    const ruta = `${ URL }/public/api/admin/marcas/${marcaid}/articulos`;
     this.cabecera(token);
     return new Promise ( resolve => {
       this.http.get<MsnApiMarcas>(ruta, this.httpOptions)
         .subscribe(respuesta =>{
           console.log(respuesta);
-          //resolve(respuesta);
+         // resolve(respuesta);
         });
     })
     
@@ -44,6 +45,7 @@ export class MarcasService {
  async getMarcas(): Promise<MsnApiMarcas>{
     const token = await this.cService.getToken();
     const ruta = `${ URL }/public/api/admin/marcas`;
+    console.log(ruta);
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept' : 'application/json',

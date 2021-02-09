@@ -1,13 +1,23 @@
-<p>
-  articulos works!
-</p>
+<ion-header>
+  <app-header></app-header>
 
-<ion-card *ngFor="let articulo of articulos">
-  <ion-card-header>
-    <ion-card-title [routerLink]="[ 'articulos', articulo.articulo_id]" >
-        {{ articulo.nombre_articulo }}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    {{ articulo.descripcion }} 
-  </ion-card-content>
-</ion-card>
+  <ion-toolbar>
+    <ion-title><h1>Artículos</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-header>
+
+
+<ion-content>
+  <div *ngIf="marca" > 
+    <ion-card *ngFor="let articulo of marca.articulos"  >
+      <ion-card-header>
+        <ion-card-title [routerLink]="[ 'articulos', articulo.articulo_id]" >
+            {{ articulo.nombre_articulo }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ articulo.descripcion }} 
+      </ion-card-content>
+    </ion-card>
+    </div>
+</ion-content>
