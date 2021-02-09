@@ -34,6 +34,11 @@ export interface MsnApiRegister {
     errors?: string;
 }
 
+export interface ILogin{
+    email: string;
+    password: string;
+}
+
 export interface MsnApiLogin {
     status?: string;
     message?: string;

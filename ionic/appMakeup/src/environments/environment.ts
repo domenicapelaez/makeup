@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   url:'http://makeup.test/makeup'
-  //url:'http://161.97.178.5/makeup/api/makeup/public/index.php'
+  //url:'http://rosepowder.online/index.php/'
 };
 
 /*

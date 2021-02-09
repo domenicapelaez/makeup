@@ -30,6 +30,7 @@ class AuthController extends Controller
         if ($validator->fails()){
             return response()->json([
                 'status' => 'error',
+                'message' => 'Error al rellenar los campos',
                 'errors'=> $validator->errors()
             ], 200);
         }
@@ -49,13 +50,13 @@ class AuthController extends Controller
             'password'      => bcrypt($request->password)
         ));
 
-        $cuenta['id'] = (int)($request->input('id'));
-        $cuenta->save();
+        $user['id'] = (int)($request->input('id'));
+        $user->save();
 
         #Paso5-. Creamos el token y lo almacenamos en oauth_access_tokens.
-        $tokenAuth = $cuenta->createToken('task api');
+        $tokenAuth = $user->createToken('task api');
         $token = $tokenAuth->accessToken;
-        $tokenAuth->token->id = $cuenta['id'];
+        $tokenAuth->token->id = $user['id'];
         $tokenAuth->token->save();
       //  dd($tokenAuth);
 

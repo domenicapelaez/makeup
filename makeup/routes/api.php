@@ -46,6 +46,10 @@ Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api');
 */
 
+Route::post('marcas', [MarcasController::class, 'marcas']);
+
+Route::post('categorias', [CategoriasController::class, 'categorias']);
+
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);

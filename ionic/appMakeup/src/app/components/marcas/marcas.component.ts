@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MarcasService } from 'src/app/services/marcas.service';
+import { IMarca } from './../../interfaces/ArticulosInterface';
+import { environment } from './../../../environments/environment';
+
+const URL = environment.url;
 
 @Component({
   selector: 'app-marcas',
@@ -8,16 +13,32 @@ import { MarcasService } from 'src/app/services/marcas.service';
 })
 export class MarcasComponent implements OnInit {
 
-  marcas: any;
+  marcas: IMarca;
+  marca: any;
 
-  constructor(private marService: MarcasService) { }
+  constructor(private marcasService: MarcasService, private route: ActivatedRoute) { 
+    this.marca = this.route.snapshot.paramMap.get('marcaid');
+    console.log (this.marca);
+    console.log(this.marcasService.getMarcas());
+  }
 
-  ngOnInit() {
-    this.marService.getMarcas()
-      .subscribe(data => {
-        this.marcas = data;
-        console.log(data)
-      })
+  async ngOnInit() {
+    let respuesta = await this.marcasService.getMarcas();
+    if (respuesta.status == 'success'){
+      this.marcas = respuesta.data;
+      console.log(this.marcas);
+    }
+  }
+
+  async ionViewWillEnter (){
+    let respuesta = await this.marcasService.getMarcas();
+    if (respuesta.status == 'success'){
+      this.marcas = respuesta.data;
+    }
+  }
+
+  articulos (marca){
+    console.log (marca);
   }
 
 }

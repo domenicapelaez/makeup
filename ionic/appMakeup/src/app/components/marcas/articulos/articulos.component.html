@@ -1,0 +1,13 @@
+<p>
+  articulos works!
+</p>
+
+<ion-card *ngFor="let articulo of articulos">
+  <ion-card-header>
+    <ion-card-title [routerLink]="[ 'articulos', articulo.articulo_id]" >
+        {{ articulo.nombre_articulo }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    {{ articulo.descripcion }} 
+  </ion-card-content>
+</ion-card>

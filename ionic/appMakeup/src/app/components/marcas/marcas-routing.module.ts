@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MarcasComponent } from './marcas.component';
-
+import { ArticulosComponent } from './../marcas/articulos/articulos.component';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
-    path: 'marcas', component: MarcasComponent
+    path: '', component: MarcasComponent,
+      children: [
+      ]
+  },
+  {
+    path: 'articulos/:articulo_id', component: ArticulosComponent
   }
 ];
 

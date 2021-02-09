@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
+import { ComunesModule } from '../comunes/comunes.module';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-
 import { CategoriasRoutingModule } from './categorias-routing.module';
 import { CategoriasComponent } from './categorias.component';
-import { IonicModule } from '@ionic/angular';
-import { ComunesModule } from '../comunes/comunes.module';
+import { ArticulosComponent } from './articulos/articulos.component';
 
 @NgModule({
-  declarations: [CategoriasComponent],
-  exports: [CategoriasComponent],
+  declarations: [CategoriasComponent, ArticulosComponent],
+  exports: [CategoriasComponent, ArticulosComponent],
   imports: [
     CommonModule,
     IonicModule,

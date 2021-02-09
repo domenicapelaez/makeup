@@ -14,10 +14,29 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getArticulos($categoriaid){
+        $articulos = Categoria::with('articulos')->where('Categoria', '=', $categoriaid)->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Articulos de la Categoria '. $categoriaid ,
+            'code' => 401,
+            'data' => $articulos
+        ]);
+    }
+
     public function index()
     {
-        $categorias = Categoria::all();         
-        return  response()->json($categorias);
+       /* $categorias = Categoria::all();         
+        return  response()->json($categorias); */
+
+        $categorias = Categoria::with('articulos')->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Categorias de la tienda',
+            'code' => 401,
+            'data' => $categorias
+        ]);
     }
 
     /**

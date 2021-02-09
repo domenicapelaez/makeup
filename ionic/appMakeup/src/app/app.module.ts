@@ -14,8 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { IonicStorageModule } from '@ionic/storage';
 
-
-
 @NgModule({
   declarations: [AppComponent, FiltroPipe],
   entryComponents: [],

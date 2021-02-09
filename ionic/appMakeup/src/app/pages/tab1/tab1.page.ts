@@ -14,11 +14,11 @@ export class Tab1Page implements OnInit {
   constructor(private marServices: MarcasService) { }
 
   ngOnInit(){
-  this.marServices.getMarcas()
+ /* this.marServices.getMarcas()
     .subscribe(data => (
       this.marcas = data,
       console.log (data)
-    ));
+    )); */
   }
 
 }

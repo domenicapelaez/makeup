@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="entrar">
-  <form (ngSubmit)="login(fLogin)" method="post" #fLogin="ngForm">
+  <form (ngSubmit)="login(fLogin)" #fLogin="ngForm">
     <ion-item>
       <ion-label position="floating">Dirección de correo electrónico</ion-label>
       <ion-input type="email" required name="email" [(ngModel)]="loginUser.email"></ion-input>

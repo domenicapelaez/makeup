@@ -13,7 +13,7 @@ class Categoria extends Model
     protected $fillable = ['nombre_categoria','categoriaid','created_at','updated_at'];
     public $timestamps = true;
 
-    public function articulo() {
+    public function articulos() {
         return $this->hasMany(Articulo::class,'categoriaid', 'categoriaid');
     }
 }

@@ -12,6 +12,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { LikeComponent } from './like/like.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 
 @NgModule({
@@ -22,14 +23,17 @@ import { FormsModule } from '@angular/forms';
     NewComponent,
     ContactoComponent,
     LikeComponent,
-    MenuComponent],
+    MenuComponent,
+    UsuarioComponent],
   exports: [HeaderComponent,
     HomeComponent,
     LoginComponent,
     CuentaComponent,
-    NewComponent,ContactoComponent,
+    NewComponent,
+    ContactoComponent,
     LikeComponent,
-    MenuComponent],
+    MenuComponent,
+    UsuarioComponent],
   imports: [
     CommonModule,
     IonicModule,

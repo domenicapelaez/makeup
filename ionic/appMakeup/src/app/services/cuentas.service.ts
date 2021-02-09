@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Subject } from 'rxjs';
 import { environment } from './../../environments/environment';
-import { ICuenta, MsnApiLogin, MsnApiRegister } from './../interfaces/CuentaInterface';
+import { ICuenta, MsnApiLogin, MsnApiRegister, ILogin } from './../interfaces/CuentaInterface';
 
 const URL = environment.url;
 
 @Injectable({
   providedIn: 'root'
 })
-export class CuentaService {
+export class CuentasService {
 
   token: string = null;
   public usuario: ICuenta;
@@ -19,13 +19,18 @@ export class CuentaService {
 
   constructor(private http: HttpClient, private storage: Storage){ }
 
-  login (email: string, password: string): Promise<MsnApiLogin>{
-    const data = { email, password };
+  public getCuentas(){
+    return this.http.get('http://makeup.test/makeup/public/api/admin/cuentas');
+  }
+
+  login (loginUser: ILogin): Promise<MsnApiLogin>{
+    const data = loginUser;
     const ruta = `${ URL }/public/api/login`;
     console.log (ruta, data);
     return new Promise( resolve => {
       this.http.post<MsnApiLogin>(ruta, data)
         .subscribe( respuesta => {          //hemos de hacer el TIPADO con INTERFACES
+          console.log(respuesta);
           if (respuesta.status == 'success'){
             this.saveToken(respuesta.token.access_token);
             this.saveUser(respuesta.user);
@@ -68,11 +73,31 @@ export class CuentaService {
           }else{
             this.token = null;
             this.storage.clear();
-         resolve (respuesta);
+            resolve (respuesta);
         }
       });
   });
 }
 
+getCuentaStorage(): Promise<ICuenta>{
+  return new Promise<ICuenta> ( resolve => {
+    this.storage.get('usuario')
+      .then (user => {
+        resolve (user);
+      });
+  });
+}
+getToken(): Promise<any>{
+  return new Promise<any> (resolve => {
+    this.storage.get('token')
+      .then ( token => {
+        resolve(token);
+      });
+  });
+}
 
+async getUsuario(){
+  const token = await this.getToken();
+  console.log (token);
+}
 }

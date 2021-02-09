@@ -1,10 +1,17 @@
+import { ArticulosComponent } from './articulos/articulos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoriasComponent } from './categorias.component';
 
+
 const routes: Routes = [
   {
-    path: 'categorias', component: CategoriasComponent
+    path: '', component: CategoriasComponent,
+      children: [
+      ]
+  },
+  {
+    path: 'articulos/:articulo_id', component: ArticulosComponent
   }
 ];
 

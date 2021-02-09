@@ -1,7 +1,9 @@
+import { CuentasService } from './../../../services/cuentas.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { MensajesService } from './../../../services/mensajes.service';
 import { ICuenta } from './../../../interfaces/CuentaInterface';
-import { CuentaService } from './../../../services/cuentas.service';
 
 @Component({
   selector: 'app-new',
@@ -17,31 +19,28 @@ export class NewComponent implements OnInit {
     apellidos: 'fontalva',
     email: 'alicia@gmail.com',
     password: 'hola'
-
   }
 
-  constructor(private uService: CuentaService,
-              private NavController: NavController) { }
+  constructor(private cService: CuentasService,
+              private NavController: NavController,
+              private mService: MensajesService) { }
 
   ngOnInit() { }
 
    async registro(fRegistro) {
 
-    if (fRegistro.invalid) { 
-      console.log('error en datos');
+    if (fRegistro.invalid) { return; }
+      //console.log('error en datos');
     
-      return; }
-    
-    const peticion = await this.uService.registro( this.newuser);
+    const peticion = await this.cService.registro( this.newuser);
     
     if ( peticion.status == 'success' ){
-     //this.uiService.alertaInformativa( peticion.message );
+     this.mService.alertaInformativa( peticion.message );
      this.NavController.navigateRoot('login', { animated: true });
       } 
-    
     else {
     console.log(peticion);
-    //this.uiService.alertaInformativa( JSON.stringify(peticion.errors) );
+    this.mService.alertaInformativa( JSON.stringify(peticion.errors) );
      }
     
     }

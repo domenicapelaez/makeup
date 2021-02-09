@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let categoria of categorias">
+  <ion-card *ngFor="let categoria of categorias" [routerLink]="[ 'articulos', categoria.categoriaid]">
     <ion-card-header>
       <img src="http://makeup.test/makeup/public/img/categorias/{{categoria.logo}}" alt="">
       <ion-card-title><h2>{{ categoria.nombre_categoria }}</h2></ion-card-title>

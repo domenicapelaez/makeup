@@ -2,19 +2,22 @@ ion-toolbar{
     --background: none;
     background-color: #D9B29C;
     display: flex;
-    text-align: center;
+    flex-flow: row;
+    text-align: end !important;
 }
 ion-tittle {
     display: flex;
-    border: none;
+    border: none !important;
+    text-align: center !important;
 }
 h1 {
     color: black;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     font-family: Montserrat;
-    font-size: 20px;
+    font-size: 21px;
 }
 ion-icon {
     color: black;
-    font-size: 20px;
+    font-size: 30px;
+    padding: 20px;
 }

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from './../../services/categorias.service';
+import { ICategoria } from './../../interfaces/ArticulosInterface';
+import { environment } from './../../../environments/environment';
 
+const URL = environment.url;
 
 @Component({
   selector: 'app-categorias',
@@ -9,16 +13,32 @@ import { CategoriasService } from './../../services/categorias.service';
 })
 export class CategoriasComponent implements OnInit {
 
-  categorias: any;
+  categorias: ICategoria;
+  categoria: any;
 
-  constructor(private catService: CategoriasService) { }
+  constructor(private categoriasService: CategoriasService, private route: ActivatedRoute) {
+    this.categoria = this.route.snapshot.paramMap.get('categoriaid');
+    console.log (this.categoria);
+    console.log(this.categoriasService.getCategorias());
+   }
 
-  ngOnInit() {
-    this.catService.getCategorias()
-    .subscribe(data => {
-      this.categorias = data,
-      console.log(data);
-    });
-  }
+   async ngOnInit() {
+     let respuesta = await this.categoriasService.getCategorias();
+     if (respuesta.status == 'success'){
+       this.categorias = respuesta.data;
+       console.log(this.categorias);
+     }
+   }
+
+   async ionViewWillEnter (){
+     let respuesta = await this.categoriasService.getCategorias();
+     if (respuesta.status == 'success'){
+       this.categorias = respuesta.data;
+     }
+   }
+
+   articulos (categoria) {
+     console.log (categoria);
+   }
 
 }

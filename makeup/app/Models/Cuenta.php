@@ -17,6 +17,6 @@ class Cuenta extends Authenticatable
     public $timestamps = true;
 
     public function usuario() {
-        return $this->hasMany(Usuario::class,'cuentaid');
+        return $this->hasMany(Usuario::class,'id');
     }
 }

@@ -7,6 +7,7 @@ import { MenuComponent } from './components/comunes/menu/menu.component';
 import { LikeComponent } from './components/comunes/like/like.component';
 import { ContactoComponent } from './components/comunes/contacto/contacto.component';
 import { CuentaComponent } from './components/comunes/cuenta/cuenta.component';
+import { UsuarioComponent } from './components/comunes/usuario/usuario.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -15,11 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: '',
+    path: 'marcas',
     loadChildren: () => import('./components/marcas/marcas.module').then(m => m.MarcasModule)
   },
   {
-    path: '',
+    path: 'categorias',
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
   },
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: 'contacto', component: ContactoComponent
+  },
+  {
+    path: 'usuario', component: UsuarioComponent
   }
 ];
 @NgModule({
