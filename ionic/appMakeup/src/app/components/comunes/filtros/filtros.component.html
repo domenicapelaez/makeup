@@ -1,0 +1,23 @@
+<ion-header>
+<ion-toolbar>
+<ion-buttons slot="start">
+  <ion-back-button text="Volver" defaultHref="/menu"></ion-back-button>
+</ion-buttons>
+
+<ion-title> <h1>Búsqueda</h1> </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="texto" placeholder="Buscar..." inputmode="text" (ionChange)="buscar($event)" [debounce]="250"></ion-searchbar>
+
+  <ion-list *ngIf="texto !== ''">
+    <!--         <ion-item *ngIf="articulos.nombre_articulo" class="error">No se ha encontrado :{{texto}}</ion-item>
+-->
+    <ion-item *ngFor="let articulo of articulos | filter:texto; index as i" (click)="texto = articulo.nombre_articulo " [routerLink]="[ '/articulos', articulo.articuloid]">
+        <!-- <ion-item *ngIf="i == 0" class="error">No se ha encontrado :{{texto}}</ion-item> -->
+        <p *ngIf="articulo.length != 0">{{ articulo.nombre_articulo }}</p>
+    </ion-item>
+</ion-list>
+
+</ion-content>

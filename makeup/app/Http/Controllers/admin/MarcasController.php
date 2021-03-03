@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeMarcaPost;
 use App\Models\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MarcasController extends Controller
 {
@@ -22,9 +22,19 @@ class MarcasController extends Controller
             'status' => 'success',
             'message' => 'Articulos de la Marca '. $marcaid ,
             'code' => 401,
-            'data' => $articulos[0]
+            'data' => $articulos //array de UNA SOLA MARCA
         ]);
     }
+
+    /*public function getVer($marcaid){
+        
+        $articulos = Marca::with('articulos')->where('marcaid', '=', $marcaid)->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Detalles del Articulo'. $marcaid ,
+            'code' => 401,
+            'data' => $articulos //array de UN SOLO ARTICULO
+        ]);*/
 
  public function index()
     {
@@ -39,6 +49,36 @@ class MarcasController extends Controller
         ]);
     }
 
+    public function agregarm(Request $request)
+    {
+        $rules = [
+            'marcaid'        => 'required|integer',
+            'nombre_marca'   => 'required',
+            'logo'           => 'required'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $marca = Marca::create(array(
+            'marcaid'            => $request->input('marcaid'),
+            'nombre_marca'       => $request->input('nombre_marca'),
+            'logo'               => $request->input('logo')
+        ));
+
+        return response()->json([
+            'status' => 'Correcto.',
+            'message' => 'Marca agregada.'], 201);
+    }
     /* public function articulos($id){
         //    echo "-->". $id;
             $marcas = Marca::with('articulos')->get();
@@ -70,10 +110,7 @@ class MarcasController extends Controller
      */
     public function store(storeMarcaPost $request)
     {
-        $marcas = $request->validated();
-        if ($marcas){
-            Marca::create($marcas);
-        }
+        //
     }
 
     /**

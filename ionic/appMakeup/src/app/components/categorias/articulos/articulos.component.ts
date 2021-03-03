@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoriasService } from './../../../services/categorias.service';
-import { ICategoria, IArticulo } from './../../../interfaces/ArticulosInterface';
-import { environment } from './../../../../environments/environment';
-
-const URL = environment.url;
+import { CuentasService } from './../../../services/cuentas.service';
+import { IArticulo, ICategoria, MsnApiCategorias } from './../../../interfaces/ArticulosInterface';
+import { ArticulosService } from './../../../services/articulos.service';
 
 @Component({
   selector: 'app-articulos',
@@ -13,19 +12,36 @@ const URL = environment.url;
 })
 export class ArticulosComponent implements OnInit {
 
-  public catid: string;
-  public categoria: ICategoria;
+  public categoriaid: string;
+  public categorias: ICategoria;
   public articulos: IArticulo[];
+  public respuesta: MsnApiCategorias;
+  cuenta: any;
 
   constructor(private route: ActivatedRoute,
-              private cService: CategoriasService) { }
+              private catService: CategoriasService,
+              private cService: CuentasService) { 
 
- async ngOnInit() {
-    this.catid = this.route.snapshot.paramMap.get('articulo_id');
-    let respuesta = await this.cService.getArticulos(this.catid);
-    if (respuesta.status == 'success'){
-      this.categoria = respuesta.data;
-    }
-  }
+  this.categoriaid = this.route.snapshot.paramMap.get('categoriaid');
+}
 
+async ngOnInit() {
+  let respuesta = await this.catService.getArticulos(this.categoriaid); 
+  this.categorias = respuesta.data;
+  console.log(this.categorias);
+  this.cService.userStorageObservable
+  .subscribe ( data => {
+    this.cuenta = data;
+  })
+}
+ionViewWillEnter (){
+this.cService.userStorageObservable
+  .subscribe ( data => {
+    this.cuenta = data;
+  })
+}
+
+async getCuenta() {
+  this.cuenta = await this.cService.getCuentaStorage();
+}
 }

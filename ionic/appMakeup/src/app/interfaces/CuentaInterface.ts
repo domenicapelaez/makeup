@@ -28,15 +28,15 @@ export interface ICompra {
     estado: string;
 }
 
+export interface ILogin{
+    email: string;
+    password: string;
+}
+
 export interface MsnApiRegister {
     status?: string;
     message?: string;
     errors?: string;
-}
-
-export interface ILogin{
-    email: string;
-    password: string;
 }
 
 export interface MsnApiLogin {

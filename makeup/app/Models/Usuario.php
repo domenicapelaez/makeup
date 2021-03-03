@@ -13,7 +13,7 @@ class Usuario extends Authenticatable {
     use HasApiTokens;
     protected $table = 'usuarios';
     protected $primarykey = 'userid';
-    protected $fillable = ['userid','nombre','apellidos','telefono','ciudad','codigopostal','id','compraid','created_at','updated_at'];
+    protected $fillable = ['userid','nombre','apellidos','telefono','ciudad','codigopostal','cuentaid','compraid','created_at','updated_at'];
     public $timestamps = true;
     
 }

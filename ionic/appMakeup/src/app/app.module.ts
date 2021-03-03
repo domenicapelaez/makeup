@@ -6,23 +6,25 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComunesModule } from './components/comunes/comunes.module';
-import { FormsModule } from '@angular/forms';
-import { FiltroPipe } from './pipes/filtro.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
 
+
 @NgModule({
-  declarations: [AppComponent, FiltroPipe],
+  declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [
+    BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
     HttpClientModule,
     ComunesModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicStorageModule.forRoot()
   ],
     

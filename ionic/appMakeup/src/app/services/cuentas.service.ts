@@ -12,7 +12,7 @@ const URL = environment.url;
 })
 export class CuentasService {
 
-  token: string = null;
+  public token: string = null;
   public usuario: ICuenta;
   private userStorage = new Subject <ICuenta>();
   public userStorageObservable = this.userStorage.asObservable();

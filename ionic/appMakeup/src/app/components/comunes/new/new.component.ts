@@ -1,5 +1,5 @@
-import { CuentasService } from './../../../services/cuentas.service';
 import { Component, OnInit } from '@angular/core';
+import { CuentasService } from './../../../services/cuentas.service';
 import { NgForm } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { MensajesService } from './../../../services/mensajes.service';
@@ -18,7 +18,7 @@ export class NewComponent implements OnInit {
     nombre: 'alicia',
     apellidos: 'fontalva',
     email: 'alicia@gmail.com',
-    password: 'hola'
+    password: 'usuario'
   }
 
   constructor(private cService: CuentasService,

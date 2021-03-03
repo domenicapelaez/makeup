@@ -5,20 +5,20 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(busq: any[], letra: string=''): any {
+  transform(array: any[], texto: string=''): any {
     
-    if (letra == '') {
-      return busq;
+    if (texto == '') {
+      return array;
     }
     
-    if ( !busq) {
-      return busq;
+    if ( !array) {
+      return array;
     }
 
-    letra = letra.toLowerCase();
+    texto = texto.toLocaleLowerCase();
 
-    return busq.filter(
-        item =>item.nombre_articulo.toLowerCase().includes(letra)
+    return array.filter(
+        item =>item.nombre_articulo.toLowerCase().includes(texto)
     )
   }
 }

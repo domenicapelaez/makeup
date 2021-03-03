@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeArticuloPost;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
 
@@ -17,10 +16,10 @@ class ArticulosController extends Controller
 
     public function index()
     {
-        $articulos = Articulo::with('marcas','categorias')->get();         
+        $articulos = Articulo::all();         
         return  response()->json([
             'status' => 'success',
-            'message' => 'Articulos de la Marca' ,
+            'message' => 'Listado de Articulos' ,
             'code' => 401,
             'data' => $articulos
         ]);
@@ -42,14 +41,9 @@ class ArticulosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(storeArticuloPost $request)
+    public function store(Request $request)
     {
-        $articulos = $request->validated();
-        if ($articulos){
-            Articulo::create($articulos);
-        } else {
-            echo "No ha funcionado";
-        }
+        //
     }
 
     /**
@@ -58,9 +52,19 @@ class ArticulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($articuloid)
     {
-        //
+        $articulos = Articulo::with('marcas')
+                                ->select('*')
+                                ->where('articulo_id', '=', $articuloid)
+                                ->get();
+        return  response()->json([
+            'status' => 'success',
+            'message' => 'Articulo seleccionado' ,
+            'data' => $articulos[0],
+            'code' => 401,
+        ]);
+
     }
 
     /**

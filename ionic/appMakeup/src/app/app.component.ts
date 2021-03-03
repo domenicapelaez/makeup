@@ -1,10 +1,10 @@
-import { MarcasService } from 'src/app/services/marcas.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { CategoriasService } from './services/categorias.service';
+import { MarcasService } from 'src/app/services/marcas.service';
 import { CuentasService } from './services/cuentas.service';
 import { Router } from '@angular/router';
 import { ICuenta } from './interfaces/CuentaInterface';
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private catServices: CategoriasService,
-    private marService: MarcasService,
+    private marSService: MarcasService,
     private cService: CuentasService,
     private navCtrl: NavController,
     private router: Router
@@ -41,16 +41,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  mostrarArticulos(m){
-    console.log(m);
-    this.router.navigate(["/marcas",{ outlets: {'primary': ["articulos",m] }} ]).then(nav => {
-      console.log(nav);
-    }, err => {
-      console.log(err)
-    }); 
-  }
-
-  async ionViewWillEnter() {
+  ionViewWillEnter() {
     console.log('datos del usuario');
     this.cService.userStorageObservable
       .subscribe ( data => {
@@ -59,8 +50,7 @@ export class AppComponent implements OnInit {
       })
   }
 
-  async ngOnInit() {
-
+  ngOnInit(): void {
     this.cService.userStorageObservable
       .subscribe ( data => {
         this.cuenta = data;
@@ -69,7 +59,7 @@ export class AppComponent implements OnInit {
   }
 
   async getCuenta(){
-    //this.cuenta = await this.cService.getCuentaStorage();
+    this.cuenta = await this.cService.getCuentaStorage();
     console.log (this.cuenta);
   } 
   

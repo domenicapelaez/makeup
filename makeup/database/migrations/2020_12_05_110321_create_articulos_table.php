@@ -22,7 +22,6 @@ class CreateArticulosTable extends Migration
             $table->integer('marcaid')->index();
             // $table->foreign('marcaid')->references('marcaid')->on('marcas');
             $table->double('precio', 5, 2);
-            $table->string('imagen', 100)->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

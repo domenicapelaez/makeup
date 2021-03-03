@@ -1,7 +1,9 @@
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MarcasComponent } from './marcas.component';
-import { ArticulosComponent } from './../marcas/articulos/articulos.component';
-import { NgModule } from '@angular/core';
+import { VerComponent } from './articulos/ver/ver.component';
+import { ArticulosComponent } from './articulos/articulos.component';
+
 
 const routes: Routes = [
   {
@@ -10,7 +12,10 @@ const routes: Routes = [
       ]
   },
   {
-    path: 'articulos/:articulo_id', component: ArticulosComponent
+    path: 'articulos/:marcaid', component: ArticulosComponent, 
+  },
+  {
+    path: 'articulos/:marcaid/:articulo_id', component: VerComponent
   }
 ];
 

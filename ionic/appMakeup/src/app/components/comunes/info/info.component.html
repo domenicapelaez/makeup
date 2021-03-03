@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atrás" defaultHref="/usuario">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title><h1>Mi información</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-item *ngIf="usuario">
+    <ion-label position="stacked"><h2>Nombre</h2></ion-label>
+    <ion-input required type="text">{{ usuario.nombre }}</ion-input>
+
+    <ion-label position="stacked"><h2>Apellidos</h2></ion-label>
+    <ion-input required type="text">{{ usuario.apellidos }}</ion-input>
+
+    <ion-label position="stacked"><h2>Email</h2></ion-label>
+    <ion-input required type="text">{{ usuario.email }}</ion-input>
+
+    <ion-label position="stacked"><h2>Ciudad</h2></ion-label>
+    <ion-input required type="text">{{ usuario.ciudad }}</ion-input>
+
+    <ion-label position="stacked"><h2>Codigo Postal</h2></ion-label>
+    <ion-input required type="text">{{ usuario.codigoPostal }}</ion-input>
+
+    <ion-label position="stacked"><h2>Telefono</h2></ion-label>
+    <ion-input required type="text">{{ usuario.telefono }}</ion-input>
+    
+    </ion-item>
+</ion-content>
+

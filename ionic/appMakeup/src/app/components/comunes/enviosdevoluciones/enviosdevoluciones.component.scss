@@ -1,0 +1,43 @@
+ion-toolbar{
+    --background: none;
+   background-color: #0D0D0D;
+}
+ion-back-button{
+    color: #8C695D;
+}
+h1{
+    color: #FFFF;
+    font-size: 20px;
+    text-align: center;
+}
+ion-content{
+    --background: none;
+    background-color: #FFE6BF;
+    height: 500px;
+}
+ion-card{
+    --background: none;
+    background-color: white;
+}
+ion-card-title{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Montserrat;
+}
+h2{
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Montserrat;
+}
+span{
+    color: black;
+    font-family: Rubik;
+    font-size: 17px;
+}
+ul{
+    color: black;
+    font-family: Rubik;
+    font-size: 17px;
+}

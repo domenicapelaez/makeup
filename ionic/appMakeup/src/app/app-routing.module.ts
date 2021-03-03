@@ -6,9 +6,15 @@ import { NewComponent } from './components/comunes/new/new.component';
 import { MenuComponent } from './components/comunes/menu/menu.component';
 import { LikeComponent } from './components/comunes/like/like.component';
 import { ContactoComponent } from './components/comunes/contacto/contacto.component';
-import { CuentaComponent } from './components/comunes/cuenta/cuenta.component';
 import { UsuarioComponent } from './components/comunes/usuario/usuario.component';
 import { CompraComponent } from './components/comunes/compra/compra.component';
+import { InfoComponent } from './components/comunes/info/info.component';
+import { AgregarmComponent } from './components/marcas/agregarm/agregarm.component';
+import { AgregarcComponent } from './components/categorias/agregarc/agregarc.component';
+import { PreguntasComponent } from './components/comunes/preguntas/preguntas.component';
+import { EmailComponent } from './components/comunes/email/email.component';
+import { EnviosdevolucionesComponent } from './components/comunes/enviosdevoluciones/enviosdevoluciones.component';
+import { FiltrosComponent } from './components/comunes/filtros/filtros.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'marcas', outlet: 'primary',
+    path: 'marcas',
     loadChildren: () => import('./components/marcas/marcas.module').then(m => m.MarcasModule)
   },
   {
@@ -34,9 +40,6 @@ const routes: Routes = [
     path: 'new', component: NewComponent
   },
   {
-    path: 'cuenta', component: CuentaComponent
-  },
-  {
     path: 'menu', component: MenuComponent
   },
   {
@@ -50,6 +53,27 @@ const routes: Routes = [
   },
   {
     path: 'compra', component: CompraComponent
+  },
+  {
+    path: 'info', component: InfoComponent
+  },
+  {
+    path: 'agregarm', component: AgregarmComponent
+  },
+  {
+    path: 'agregarc', component: AgregarcComponent
+  },
+  {
+    path: 'enviosydevoluciones', component: EnviosdevolucionesComponent
+  },
+  {
+    path: 'email', component: EmailComponent
+  },
+  {
+    path: 'preguntas', component: PreguntasComponent
+  },
+  {
+    path: 'filtros', component: FiltrosComponent
   }
 ];
 @NgModule({

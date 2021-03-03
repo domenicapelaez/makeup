@@ -38,6 +38,10 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('registro', [AuthController::class, 'registro']);
 
+Route::post('agregarm', [MarcasController::class, 'agregarm']);
+
+Route::post('agregarc', [CategoriasController::class, 'agregarc']);
+
 /*
 Route::get('user', [AuthController::class, 'getUser'])
     ->middleware('auth:api');
@@ -46,11 +50,17 @@ Route::post('logout', [AuthController::class, 'logout'])
     ->middleware('auth:api');
 */
 
+
 Route::post('marcas', [ArticulosController::class, 'marcas']);
 
 Route::post('categorias', [ArticulosController::class, 'categorias']);
 
+Route::get('admin/marcas/articulos', [ArticulosController::class, 'articulos']);
+
+Route::get('admin/categorias/articulos', [ArticulosController::class, 'articulos']);
+
 Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('admin/usuarios', [UsuariosController::class, 'usuario']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
 });

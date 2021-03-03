@@ -1,8 +1,8 @@
-import { ArticulosComponent } from './articulos/articulos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoriasComponent } from './categorias.component';
-
+import { ArticulosComponent } from './articulos/articulos.component';
+import { VerComponent } from './articulos/ver/ver.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,10 @@ const routes: Routes = [
       ]
   },
   {
-    path: 'articulos/:articulo_id', component: ArticulosComponent
+    path: 'articulos/:categoriaid', component: ArticulosComponent
+  },
+  {
+    path: 'articulos/:categoriaid/:articulo_id', component: VerComponent
   }
 ];
 

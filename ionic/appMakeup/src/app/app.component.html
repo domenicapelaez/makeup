@@ -17,10 +17,15 @@
       <ion-label>Menú</ion-label>
     </ion-tab-button>
 
-   <ion-tab-button tab="like">
+   <ion-tab-button tab="like" *ngIf="cuenta">
     <ion-icon name="heart-outline"></ion-icon>
       <ion-label>Favoritos</ion-label>
     </ion-tab-button>
+
+  <ion-tab-button tab="login" *ngIf="!cuenta">
+      <ion-icon name="heart-outline"></ion-icon>
+        <ion-label>Favoritos</ion-label>
+      </ion-tab-button>
 
    <ion-tab-button tab="contacto">
     <ion-icon name="help-circle-outline"></ion-icon>

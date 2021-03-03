@@ -13,4 +13,32 @@ h1{
 ion-content{
     --background: none;
     background-color: #FFE6BF;
+    height: 500px;
+}
+ion-card{
+    --background: none;
+    background-color: white;
+}
+ion-card-title{
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+}
+ion-card-content{
+    color: black;
+    font-size: 20px;
+    text-align: justify;
+    font-family: Rubik;
+}
+img{
+    display: block;
+    margin: auto;
+}
+span{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 25px;
+    font-weight: bold;
 }

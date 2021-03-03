@@ -1,23 +1,28 @@
 <ion-header>
-  <app-header></app-header>
-
   <ion-toolbar>
-    <ion-title><h1>Artículos</h1></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" defaultHref="/marcas">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title><h1>Artículos por Marcas</h1></ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-header>
 
 
-<ion-content>
-  <div *ngIf="marca" > 
-    <ion-card *ngFor="let articulo of marca.articulos"  >
+<ion-content >
+  <div *ngFor="let m of marcas"> 
+    <ion-card *ngFor="let articulo of m.articulos; index as i" [routerLink]="[articulo.articulo_id]">
       <ion-card-header>
-        <ion-card-title [routerLink]="[ 'articulos', articulo.articulo_id]" >
-            {{ articulo.nombre_articulo }}</ion-card-title>
+        <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
+        <ion-card-title>
+            {{ articulo.nombre_articulo }}
+          </ion-card-title>
       </ion-card-header>
       <ion-card-content>
         {{ articulo.descripcion }} 
+        <br> <br>
+        <span>{{ articulo.precio }} €</span>
       </ion-card-content>
     </ion-card>
-    </div>
+  </div>
 </ion-content>

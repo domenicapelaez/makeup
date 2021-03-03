@@ -5,31 +5,27 @@ export interface IArticulo {
     categoriaid?: ICategoria;
     marcaid?: IMarca;
     precio?: string;
-    imagen?: string;
-}
-export interface ICategoria {
-    categoriaid?: number;
-    nombre_categoria?: string;
-    articulos?: IArticulo;
-}
-
-type CCategorias = ICategoria[] | ICategoria;
-export interface MsnApiCategorias {
-    status?: string;
-    message?: string;
-    errors?: string;
-    code?: number;
-    data?: ICategoria;
-//    data?: M;
+    logo?:string;
 }
 
 export interface IMarca {
     marcaid?: number;
     nombre_marca?: string;
+    logo?:string;
+    articulos?: IArticulo[]
+}
+
+export interface ICategoria {
+    categoriaid?: number;
+    nombre_categoria?: string;
+    logo?:string;
     articulos?: IArticulo[];
 }
 
-type MMarcas = IMarca[] | IMarca;
+type Categorias = ICategoria[] | ICategoria;
+
+type Marcas = IMarca[] | IMarca;
+
 export interface MsnApiMarcas {
     status?: string;
     message?: string;
@@ -39,11 +35,32 @@ export interface MsnApiMarcas {
 //    data?: M;
 }
 
+export interface MsnApiCategorias {
+    status?: string;
+    message?: string;
+    errors?: string;
+    code?: number;
+    data?: ICategoria;
+//    data?: M;
+}
+
 export interface MsnApiArticulos {
     status?: string;
     message?: string;
     errors?: string;
     code?: number;
-    //data?: IMarca[] | IArticulo[];
-    data?: IArticulo[] | IArticulo | IMarca | IMarca[];
+    data?: IArticulo[];
+}
+
+export interface MsnApiAgregarc {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: ICategoria;
+}
+export interface MsnApiAgregarm {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: IMarca;
 }

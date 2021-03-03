@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\storeCategoriaPost;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoriasController extends Controller
 {
@@ -40,6 +40,36 @@ class CategoriasController extends Controller
         ]);
     }
 
+    public function agregarc(Request $request)
+    {
+        $rules = [
+            'categoriaid'        => 'required|integer',
+            'nombre_categoria'   => 'required',
+            'logo'               => 'required'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $categoria = Categoria::create(array(
+            'categoriaid'        => $request->input('categoriaid'),
+            'nombre_categoria'   => $request->input('nombre_categoria'),
+            'logo'               => $request->input('logo')
+        ));
+
+        return response()->json([
+            'status' => 'Correcto.',
+            'message' => 'Categoria agregada.'], 201);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -58,10 +88,7 @@ class CategoriasController extends Controller
      */
     public function store(storeCategoriaPost $request)
     {
-        $categorias = $request->validated();
-        if ($categorias){
-            Categoria::create($categorias);
-        }
+        //
     }
 
     /**

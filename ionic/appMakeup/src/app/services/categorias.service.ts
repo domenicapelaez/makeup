@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
+import { Storage } from '@ionic/storage';
 import { CuentasService } from './cuentas.service';
-import { MsnApiCategorias } from './../interfaces/ArticulosInterface';
+import { MsnApiCategorias, ICategoria, MsnApiAgregarc } from './../interfaces/ArticulosInterface';
+import { environment } from './../../environments/environment';
 
 const URL = environment.url;
 
@@ -10,47 +11,70 @@ const URL = environment.url;
   providedIn: 'root'
 })
 export class CategoriasService {
-    private httpOptions: any;
+  
+    public token: string = null;
+    public categoria: ICategoria;
 
-    constructor(private http: HttpClient, private cService: CuentasService) { }
+    constructor(private http: HttpClient, private cService: CuentasService, private storage: Storage) { }
 
-cabecera (token) {
-  this.httpOptions = {
-    headers: new HttpHeaders({
-      'Accept' : 'application/json',
-      'Authorization' : 'Bearer ' + token,
-    })
-  };
-}
 
 async getArticulos(categoriaid):Promise<MsnApiCategorias>{
-  const token = await this.cService.getToken();
+  console.log("categoriaid = ",categoriaid);
   const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/articulos`;
-  this.cabecera(token);
+  //this.cabecera(token);
   return new Promise ( resolve => {
-    this.http.get<MsnApiCategorias>(ruta, this.httpOptions)
-      .subscribe(respuesta =>{
-        console.log(respuesta);
-       // resolve(respuesta);
+    this.http.get<MsnApiCategorias>(ruta)
+      .subscribe( data =>{
+        console.log(data);
+        resolve(data);
       });
   })
 }
 
 async getCategorias(): Promise<MsnApiCategorias>{
-  const token = await this.cService.getToken();
   const ruta = `${ URL }/public/api/admin/categorias`;
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Accept' : 'application/json',
-      'Authorization' : 'Bearer ' + token,
-    })
-  };
   return new Promise ( resolve => {
-    this.http.get<MsnApiCategorias>(ruta, httpOptions)
+    this.http.get<MsnApiCategorias>(ruta)
       .subscribe ( respuesta => {
         resolve( respuesta );
       })
   })
 }
+
+agregarc (categoria: ICategoria): Promise<MsnApiAgregarc>{
+  console.log(categoria);
+
+  const ruta = `${ URL }/public/api/agregarc`;
+  const data = categoria;
+  console.log (ruta, data);
+
+  return new Promise ( resolve => {
+    this.http.post<MsnApiAgregarc>(ruta, data)
+      .subscribe (respuesta => {
+        if (respuesta.status == 'success'){
+          resolve(respuesta)
+        }else{
+          this.token = null;
+          this.storage.clear();
+          resolve (respuesta);
+      }
+    });
+});
+}
+
+/* async getVer(categoriaid,articuloid):Promise<MsnApiCategorias>{
+  console.log("categoriaid = ",categoriaid);
+  console.log("articuloid = ",articuloid);
+  
+  const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/articulos/${articuloid}`;
+ // this.cabecera(token);
+  return new Promise ( resolve => {
+    this.http.get<MsnApiCategorias>(ruta)
+      .subscribe(data =>{
+        console.log(data);
+       resolve(data);
+      });
+  })
+} */
 
 }

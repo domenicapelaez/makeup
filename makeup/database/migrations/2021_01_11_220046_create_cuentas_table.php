@@ -19,7 +19,7 @@ class CreateCuentasTable extends Migration
             $table->string('nombre',100);
             $table->string('apellidos',100);
             $table->string('email',100);
-            $table->string('pass',250);
+            $table->string('password',250);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

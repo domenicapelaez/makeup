@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function registro(Request $request)
     {
         $rules = [
-            'id'    => 'required|integer',
+            'id'          => 'required|integer',
             'rol'         => 'required',
             'nombre'      => 'required',
             'apellidos'   => 'required',
@@ -41,7 +41,7 @@ class AuthController extends Controller
 
        // $cuenta = New cuenta([
 
-        $cuenta = Cuenta::create(array(
+        $user = Cuenta::create(array(
             'id'            => $request->input('id'),
             'rol'           => $request->input('rol'),
             'nombre'        => $request->input('nombre'),

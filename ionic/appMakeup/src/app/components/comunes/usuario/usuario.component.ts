@@ -1,3 +1,4 @@
+import { ICuenta } from './../../../interfaces/CuentaInterface';
 import { Component, OnInit } from '@angular/core';
 import { CuentasService } from './../../../services/cuentas.service';
 
@@ -9,29 +10,32 @@ import { CuentasService } from './../../../services/cuentas.service';
 })
 export class UsuarioComponent implements OnInit {
 
-  cuentas: any;
+  cuentas: ICuenta;
 
   constructor(private cService: CuentasService) { }
 
-  ngOnInit() {
-    this.cService.getCuentas()
-    .subscribe(data => {
-      this.cuentas = data,
-      console.log(data);
-    });
-  }
+  async ngOnInit() {
+    //this.cuentas = await this.cService.getCuentaStorage();
+   // console.log (this.cuentas);
 
-  ionViewWillEnter (){
-    this.cService.userStorageObservable
+   this.cService.userStorageObservable
       .subscribe ( data => {
         this.cuentas = data;
         console.log (this.cuentas );
       })
   }
 
-  async getUser() {
+  async ionViewWillEnter (){
+    console.log('entrar');
+  }
+    /*
+    this.cService.userStorageObservable
+      .subscribe ( data => {
+        this.cuentas = data;
+        console.log (this.cuentas );
+      })
+      */
+  async getCuentas(){
     this.cuentas = await this.cService.getCuentaStorage();
-    console.log (this.cuentas);
-}
-
+     }
 }

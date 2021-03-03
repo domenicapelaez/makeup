@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarcasService } from 'src/app/services/marcas.service';
-import { IArticulo, IMarca } from './../../../interfaces/ArticulosInterface';
-import { environment } from './../../../../environments/environment';
-
-const URL = environment.url;
+import { CuentasService } from './../../../services/cuentas.service';
+import { IArticulo, IMarca, MsnApiMarcas } from './../../../interfaces/ArticulosInterface';
 
 @Component({
   selector: 'app-articulos',
@@ -14,23 +12,35 @@ const URL = environment.url;
 export class ArticulosComponent implements OnInit {
 
   public marcaid: string;
-  public marcas: IMarca;
-  public marca: IMarca;
+  public marcas: IMarca[];
   public articulos: IArticulo[];
+  public respuesta: MsnApiMarcas;
+  cuenta: any;
 
   constructor(private route: ActivatedRoute,
-              private mService: MarcasService) { 
-              }
+              private mService: MarcasService,
+              private cService: CuentasService) { 
+  
+  this.marcaid = this.route.snapshot.paramMap.get('marcaid');
+}
 
- async ngOnInit() {
-    this.marcaid = this.route.snapshot.paramMap.get('articulo_id');
-    let respuesta = await this.mService.getArticulos(this.marcaid);
-    //console.log('articulos');
-    if (respuesta.status == 'success'){
-      this.marca = respuesta.data[0];
-      //console.log(this.marca);
-      console.log(this.marcas);
-    }
-  }
+  async ngOnInit() {
+    let respuesta = await this.mService.getArticulos(this.marcaid); 
+    this.marcas = respuesta.data;
+    console.log(this.marcas);
+    this.cService.userStorageObservable
+    .subscribe ( data => {
+      this.cuenta = data;
+    })
+}
+  ionViewWillEnter (){
+  this.cService.userStorageObservable
+    .subscribe ( data => {
+      this.cuenta = data;
+    })
+}
 
+async getCuenta() {
+    this.cuenta = await this.cService.getCuentaStorage();
+}
 }

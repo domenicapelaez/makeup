@@ -10,7 +10,7 @@ class Marca extends Model
     use HasFactory;
     protected $table = 'marcas';
     protected $primarykey = 'marcaid';
-    protected $fillable = ['marcaid','nombre_marca','created_at','updated_at'];
+    protected $fillable = ['marcaid','nombre_marca','logo','created_at','updated_at'];
     public $timestamps = true;
 
     public function articulos() {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLogoMarcasCategorias extends Migration
+class AddLogoMarcasCategoriasArticulos extends Migration
 {
     /**
      * Run the migrations.
@@ -20,6 +20,9 @@ class AddLogoMarcasCategorias extends Migration
         Schema::table('categorias', function (Blueprint $table) {
             $table->string('logo',50)->after('nombre_categoria');
         });
+	    Schema::table('articulos', function (Blueprint $table) {
+            $table->string('logo',50)->after('precio');
+        });
     }
 
     /**
@@ -34,6 +37,9 @@ class AddLogoMarcasCategorias extends Migration
         });
 
         Schema::table('categorias', function (Blueprint $table) {
+            $table->dropColumn('logo');
+        });
+	    Schema::table('articulos', function (Blueprint $table) {
             $table->dropColumn('logo');
         });
     }

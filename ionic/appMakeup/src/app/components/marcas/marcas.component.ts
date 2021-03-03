@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { IMarca } from './../../interfaces/ArticulosInterface';
+import { CuentasService } from './../../services/cuentas.service';
 import { environment } from './../../../environments/environment';
 
 const URL = environment.url;
@@ -16,32 +18,16 @@ export class MarcasComponent implements OnInit {
   marcas: IMarca[];
   marca: any;
 
-  constructor(private marcasService: MarcasService, private route: ActivatedRoute) { 
-    this.marca = this.route.snapshot.paramMap.get('articulo_id');
-   console.log (this.marca);
-    console.log(this.marcasService.getMarcas());
+  constructor(private marcasService: MarcasService, 
+              public cService: CuentasService, 
+              private route: ActivatedRoute,
+) { 
+    this.marca = this.route.snapshot.paramMap.get('marcaid');
   }
 
   async ngOnInit() {
     let respuesta = await this.marcasService.getMarcas();
-    if (respuesta.status == 'success'){
+      this.marcas = respuesta.data;
       console.log(respuesta);
-      this.marcas = respuesta.data;
-      console.log(this.marcas);
     }
-  }
-
-  async ionViewWillEnter (){
-    let respuesta = await this.marcasService.getMarcas();
-    console.log(respuesta);
-
-    if (respuesta.status == 'success'){
-      this.marcas = respuesta.data;
-    }
-  }
-
-  articulos (marca){
-    console.log (marca);
-  }
-
 }
