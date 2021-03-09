@@ -1,0 +1,39 @@
+ion-toolbar{
+    --background: none;
+   background-color: #0D0D0D;
+}
+ion-back-button{
+    color: #8C695D;
+}
+h1{
+    font-size: 17px;
+    text-align: center;
+    text-transform: uppercase;
+}
+ion-content{
+    --background: none;
+    background-color: #FFE6BF;
+}
+ion-item{
+    --background: none;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+}
+ion-label{
+    font-weight: bold;
+    font-family: Palanquin;
+}
+ion-input{
+    color: rgb(44, 19, 11);
+    font-size: 18px;
+    font-family: Rubik;
+}
+ion-button{
+    --background: none;
+    --background-activated: none;
+    background-color: #A66F74;
+    color: black;
+    font-weight: bold;
+    border-bottom: none;
+}

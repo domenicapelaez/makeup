@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" defaultHref="/filtros">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title><h1>Artículos</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let articulo of articulos; index as i" [routerLink]="[ articulo.articulo_id]">
+        <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
+        <ion-card-title> {{articulo.nombre_articulo}}</ion-card-title>
+        <ion-card-content>{{articulo.descripcion}}</ion-card-content>
+        <ion-item>
+            <ion-card-subtitle>{{articulo.precio}}€</ion-card-subtitle>
+        </ion-item>
+
+    </ion-card>
+</ion-content>

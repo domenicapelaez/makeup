@@ -27,7 +27,6 @@ export class UsuarioComponent implements OnInit {
 
   async ionViewWillEnter (){
     console.log('entrar');
-  }
     /*
     this.cService.userStorageObservable
       .subscribe ( data => {
@@ -35,7 +34,8 @@ export class UsuarioComponent implements OnInit {
         console.log (this.cuentas );
       })
       */
-  async getCuentas(){
+
     this.cuentas = await this.cService.getCuentaStorage();
-     }
+    console.log(this.cuentas)  
+  }
 }

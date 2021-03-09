@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -17,10 +18,16 @@ export class MarcasComponent implements OnInit {
 
   marcas: IMarca[];
   marca: any;
+  rol: string;
+  tipo: string;
+  isActiveConfig: boolean = false;
+  isClickConfig: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private marcasService: MarcasService, 
               public cService: CuentasService, 
               private route: ActivatedRoute,
+              public configService: ConfigService
 ) { 
     this.marca = this.route.snapshot.paramMap.get('marcaid');
   }
@@ -29,5 +36,9 @@ export class MarcasComponent implements OnInit {
     let respuesta = await this.marcasService.getMarcas();
       this.marcas = respuesta.data;
       console.log(respuesta);
+    }
+
+    pulsar(){
+      this.configService.edicion();
     }
 }

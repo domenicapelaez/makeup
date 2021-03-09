@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CuentasService } from '../../../services/cuentas.service';
 import { MarcasService } from '../../../services/marcas.service';
 import { IMarca, MsnApiArticulos, IArticulo } from '../../../interfaces/ArticulosInterface';
 import { ArticulosService } from '../../../services/articulos.service';
-import { Platform } from '@ionic/angular';
+import { Platform, PopoverController } from '@ionic/angular';
 import { IFiltrosArticulos } from '../../../interfaces/FiltrosInterfaces';
+import { PopoverComponent } from './../popover/popover.component';
 
 @Component({
   selector: 'app-filtros',
@@ -16,8 +17,8 @@ export class FiltrosComponent implements OnInit {
 
   public respuesta: MsnApiArticulos;
   public articulo: IArticulo;
-  articulos: any;
   public texto='';
+  articulos: any;
   cuenta: any;
   
   public marca: IMarca[];
@@ -29,59 +30,20 @@ export class FiltrosComponent implements OnInit {
     marcas: [],
   };
 
-  //@Input('seccion') seccion: string;
+  @Input('seccion') seccion: string;
 
   constructor(public platform: Platform,
               private mService: MarcasService,
               private filterAService: ArticulosService,
               private cService: CuentasService,
               private articulosService: ArticulosService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public popoverController: PopoverController) {
 
   this.articulos = this.route.snapshot.paramMap.get('articulo_id');
 
-   /* this.platform.ready().then( () => {
-      this.rangeVal = "50";
-    }); */
-  }
-
-  /* async ionViewWillEnter(){
-   let respuesta = await this.marcasService.getMarcas();
-   this.marca = respuesta.data;
-   console.log (respuesta);
-  }
-
-  changeRange(precio) {
-    console.log(precio.detail.value.lower, ':', precio.detail.value.upper);
-    this.IFiltros.precios[0] = precio.detail.value.lower;
-    this.IFiltros.precios[1] = precio.detail.value.upper;
-  }
-
-  async ngOnInit() {
-    let respuesta = await this.marcasService.getMarcas();
-    this.marca = respuesta.data;
-    console.log (respuesta);
-  }
-
-  async selectmarca(marca, pos){
-    console.log(marca, pos);
-
-    let i = this.items.indexOf(marca);
-    if ( i == 1){
-      this.items.push(marca);
-    }else {
-      this.items.splice ( i,1 );
+  
     }
-    console.log(this.items);
-    }
-
-    async aplicar(){
-      this.IFiltros.marcas = this.items;
-
-      console.log (this.IFiltros);
-      let respuesta = await this.filterAService.getFilter(this.IFiltros);
-      this.items = [];
-    } */
   
     async ngOnInit() {
       let respuesta = await this.articulosService.getArticulos();
@@ -110,7 +72,15 @@ export class FiltrosComponent implements OnInit {
     async getCuenta() {
       this.cuenta = await this.cService.getCuentaStorage();
     }
-    
+
+    async presentPopover(ev: any){
+      const popover = await this.popoverController.create({
+        component: PopoverComponent,
+        event: ev,
+        translucent: true
+      });
+      return await popover.present();
+    }
   }
 
 

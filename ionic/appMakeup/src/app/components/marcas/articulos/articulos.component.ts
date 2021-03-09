@@ -16,6 +16,7 @@ export class ArticulosComponent implements OnInit {
   public articulos: IArticulo[];
   public respuesta: MsnApiMarcas;
   cuenta: any;
+  favorito: {};
 
   constructor(private route: ActivatedRoute,
               private mService: MarcasService,

@@ -9,12 +9,12 @@ import { ContactoComponent } from './components/comunes/contacto/contacto.compon
 import { UsuarioComponent } from './components/comunes/usuario/usuario.component';
 import { CompraComponent } from './components/comunes/compra/compra.component';
 import { InfoComponent } from './components/comunes/info/info.component';
-import { AgregarmComponent } from './components/marcas/agregarm/agregarm.component';
-import { AgregarcComponent } from './components/categorias/agregarc/agregarc.component';
-import { PreguntasComponent } from './components/comunes/preguntas/preguntas.component';
 import { EmailComponent } from './components/comunes/email/email.component';
 import { EnviosdevolucionesComponent } from './components/comunes/enviosdevoluciones/enviosdevoluciones.component';
 import { FiltrosComponent } from './components/comunes/filtros/filtros.component';
+import { AgregarcComponent } from './components/agregarc/agregarc.component';
+import { AgregarmComponent } from './components/agregarm/agregarm.component';
+import { AgregaraComponent } from './components/agregara/agregara.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'categorias',
     loadChildren: () => import('./components/categorias/categorias.module').then(m => m.CategoriasModule)
+  },
+  {
+    path: 'articulos',
+    loadChildren: () => import('./components/articulos/articulos.module').then(m => m.ArticulosModule)
   },
   {
     path: 'home', component: HomeComponent
@@ -58,22 +62,22 @@ const routes: Routes = [
     path: 'info', component: InfoComponent
   },
   {
-    path: 'agregarm', component: AgregarmComponent
-  },
-  {
-    path: 'agregarc', component: AgregarcComponent
-  },
-  {
     path: 'enviosydevoluciones', component: EnviosdevolucionesComponent
   },
   {
     path: 'email', component: EmailComponent
   },
   {
-    path: 'preguntas', component: PreguntasComponent
+    path: 'filtros', component: FiltrosComponent
   },
   {
-    path: 'filtros', component: FiltrosComponent
+    path: 'agregarc', component: AgregarcComponent
+  },
+  {
+    path: 'agregarm', component: AgregarmComponent
+  },
+  {
+    path: 'agregara', component: AgregaraComponent
   }
 ];
 @NgModule({

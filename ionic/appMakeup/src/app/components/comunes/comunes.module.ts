@@ -1,4 +1,4 @@
-import { PipesModule } from './../../pipes/pipes.module';
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -15,7 +15,12 @@ import { MenuComponent } from './menu/menu.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { InfoComponent } from './info/info.component';
 import { CompraComponent } from './compra/compra.component';
-
+import { PipesModule } from './../../pipes/pipes.module';
+import { AgregarcComponent } from '../agregarc/agregarc.component';
+import { AgregarmComponent } from '../agregarm/agregarm.component';
+import { AgregaraComponent } from './../agregara/agregara.component';
+import { FiltrosComponent } from './filtros/filtros.component';
+import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -27,7 +32,12 @@ import { CompraComponent } from './compra/compra.component';
     MenuComponent,
     UsuarioComponent,
     CompraComponent,
-    InfoComponent],
+    InfoComponent,
+    AgregarcComponent,
+    AgregarmComponent,
+    AgregaraComponent,
+    FiltrosComponent,
+    PopoverComponent],
 
   exports: [HeaderComponent,
     HomeComponent,
@@ -39,13 +49,18 @@ import { CompraComponent } from './compra/compra.component';
     UsuarioComponent,
     CompraComponent,
     InfoComponent,
-    PipesModule],
+    AgregarcComponent,
+    AgregarmComponent,
+    AgregaraComponent,
+    FiltrosComponent,
+    PopoverComponent],
 
   imports: [
     CommonModule,
     IonicModule,
+    PipesModule,
     ComunesRoutingModule,
-    FormsModule,
+    FormsModule
   ]
 })
 export class ComunesModule { }

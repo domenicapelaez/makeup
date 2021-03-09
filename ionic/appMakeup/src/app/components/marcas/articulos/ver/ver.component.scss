@@ -4,10 +4,11 @@ ion-toolbar{
 }
 ion-back-button{
     color: #8C695D;
+    font-size: 14px;
 }
 h1{
     color: #FFFF;
-    font-size: 20px;
+    font-size: 14px;
     text-align: center;
 }
 ion-content{
@@ -41,4 +42,17 @@ span{
     align-items: flex-end;
     font-size: 25px;
     font-weight: bold;
+    color: black;
+}
+ion-item {
+    --background: none;
+    --box-shadow: none;
+    --border-style: none;
+    background-color: white !important;
+}
+ion-button{
+    --background: none;
+    --box-shadow: none;
+    background-color: white !important;
+    font-size: 17px;
 }

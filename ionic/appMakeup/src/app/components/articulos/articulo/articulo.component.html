@@ -1,0 +1,30 @@
+<ion-header>
+  <div *ngIf="articulos">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="" defaultHref="/filtros">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title><h1> {{ articulos.nombre_articulo }} </h1></ion-title>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+
+<ion-content *ngIf="articulos">
+    <ion-card>
+      <ion-card-header>
+        <img src="http://makeup.test/makeup/public/img/articulos/{{articulos.logo}}" alt="">
+      </ion-card-header>
+      <ion-card-content>
+        {{ articulos.descripcion }} 
+        <br> <br>
+        <ion-item>
+          <span slot="end">{{ articulos.precio }} €</span>
+          <ion-button slot="start" (click)="favorito = !favorito">
+            <ion-icon color="danger" [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
+        </ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

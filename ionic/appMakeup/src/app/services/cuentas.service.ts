@@ -96,6 +96,15 @@ getToken(): Promise<any>{
   });
 }
 
+getRol(): Promise<string>{
+  return new Promise<string> (resolve => {
+    this.storage.get('usuario')
+    .then (usuario => {
+      resolve (usuario.rol);
+    });
+  });
+}
+
 async getUsuario(){
   const token = await this.getToken();
   console.log (token);

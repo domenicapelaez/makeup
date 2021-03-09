@@ -15,8 +15,8 @@ class ArticulosController extends Controller
         $categorias = $data['marcas'];
         $articulos = Articulo::select("*")
                                 ->whereIn('Marca', $marcas)
-                                ->where('PrecioVenta', '>', $precio[0])
-                                ->where('PrecioVenta', '<', $precios[1])
+                                ->where('precio', '>', $precio[0])
+                                ->where('precio', '<', $precios[1])
                                 ->get();
         return response()->json([
             'status' => 'success',

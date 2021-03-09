@@ -67,19 +67,4 @@ export class MarcasService {
   });
 }
 
-/* async getVer(marcaid,articuloid):Promise<MsnApiMarcas>{
-  console.log("marcaid = ",marcaid);
-  console.log("articuloid = ",articuloid);
-  
-  const ruta = `${ URL }/public/api/admin/marcas/${marcaid}/articulos/${articuloid}`;
- // this.cabecera(token);
-  return new Promise ( resolve => {
-    this.http.get<MsnApiMarcas>(ruta)
-      .subscribe(data =>{
-        console.log(data);
-       resolve(data);
-      });
-  })
-} */
-
 }

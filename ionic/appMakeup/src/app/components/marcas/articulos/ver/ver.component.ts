@@ -13,6 +13,7 @@ export class VerComponent implements OnInit {
 
   public articuloid: string;
   public articulos: IArticulo[];
+  favorito: {};
 
   constructor(private route: ActivatedRoute,
               private articulosService: ArticulosService) {

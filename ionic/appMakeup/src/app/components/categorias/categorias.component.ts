@@ -1,3 +1,4 @@
+import { ConfigService } from './../../services/config.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -17,10 +18,16 @@ export class CategoriasComponent implements OnInit {
 
   categorias: ICategoria;
   categoria: any;
+  rol: string;
+  tipo: string;
+  isActiveConfig: boolean = false;
+  isClickConfig: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private categoriasService: CategoriasService, 
               public cService: CuentasService, 
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public configService: ConfigService) {
 
     this.categoria = this.route.snapshot.paramMap.get('categoriaid');
    }
@@ -30,4 +37,8 @@ export class CategoriasComponent implements OnInit {
        this.categorias = respuesta.data;
        console.log(respuesta);
      }
+
+    pulsar(){
+      this.configService.edicion();
+    }
    }

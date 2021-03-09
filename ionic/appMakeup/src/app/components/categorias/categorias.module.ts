@@ -7,24 +7,21 @@ import { IonicModule } from '@ionic/angular';
 import { CategoriasRoutingModule } from './categorias-routing.module';
 import { CategoriasComponent } from './categorias.component';
 import { ArticulosComponent } from './articulos/articulos.component';
-import { AgregarcComponent } from './agregarc/agregarc.component';
 import { VerComponent } from './articulos/ver/ver.component';
 
 @NgModule({
   declarations: [CategoriasComponent, 
                 ArticulosComponent,
-                AgregarcComponent,
                 VerComponent],
   exports: [CategoriasComponent, 
             ArticulosComponent,
-            AgregarcComponent,
             VerComponent],
   imports: [
     CommonModule,
     IonicModule,
     ComunesModule,
-    FormsModule,
-    CategoriasRoutingModule
+    CategoriasRoutingModule,
+    FormsModule
   ]
 })
 export class CategoriasModule { }

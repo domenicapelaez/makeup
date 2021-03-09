@@ -14,7 +14,7 @@
 <ion-content>
   <div *ngFor="let c of categorias"> 
     <ion-card *ngFor="let articulo of c.articulos; index as i" [routerLink]="[articulo.articulo_id]">
-      <ion-card-header>
+      <ion-card-header >
         <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
         <ion-card-title >
             {{ articulo.nombre_articulo }}</ion-card-title>

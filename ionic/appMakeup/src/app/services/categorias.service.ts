@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { CuentasService } from './cuentas.service';
 import { MsnApiCategorias, ICategoria, MsnApiAgregarc } from './../interfaces/ArticulosInterface';
 import { environment } from './../../environments/environment';
+import { Observable } from 'rxjs';
 
 const URL = environment.url;
 
@@ -60,21 +61,6 @@ agregarc (categoria: ICategoria): Promise<MsnApiAgregarc>{
       }
     });
 });
-}
-
-/* async getVer(categoriaid,articuloid):Promise<MsnApiCategorias>{
-  console.log("categoriaid = ",categoriaid);
-  console.log("articuloid = ",articuloid);
-  
-  const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/articulos/${articuloid}`;
- // this.cabecera(token);
-  return new Promise ( resolve => {
-    this.http.get<MsnApiCategorias>(ruta)
-      .subscribe(data =>{
-        console.log(data);
-       resolve(data);
-      });
-  })
-} */
+} 
 
 }

@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function registro(Request $request)
     {
         $rules = [
-            'id'          => 'required|integer',
+            'id'         => 'required|integer',
             'rol'         => 'required',
             'nombre'      => 'required',
             'apellidos'   => 'required',
@@ -55,6 +55,7 @@ class AuthController extends Controller
 
         #Paso5-. Creamos el token y lo almacenamos en oauth_access_tokens.
         $tokenAuth = $user->createToken('task api');
+        
         $token = $tokenAuth->accessToken;
         $tokenAuth->token->id = $user['id'];
         $tokenAuth->token->save();
