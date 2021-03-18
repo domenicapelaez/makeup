@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\MarcasController;
 use App\Http\Controllers\admin\ArticulosController;
 use App\Http\Controllers\admin\UsuariosController;
 use App\Http\Controllers\admin\CuentasController;
+use App\Http\Controllers\admin\FavoritosController;
 use App\Http\Controllers\admin\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -63,5 +64,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('admin/usuarios', [UsuariosController::class, 'usuario']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
+    Route::get('articulos/{articulo_id}/remove',[ ArticulosController::class, 'destroy' ]);
 });
 
+Route::post('admin/newfavoritos', [FavoritosController::class, 'newfavorito']);
+
+Route::get('admin/favoritos', [FavoritosController::class, 'favoritos']);

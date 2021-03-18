@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url:'http://makeup.test/makeup'
+  url:'http://makeup.test/makeup/public'
   //url:'http://rosepowder.online/index.php/'
 };
 

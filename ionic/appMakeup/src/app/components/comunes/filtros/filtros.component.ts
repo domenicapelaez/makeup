@@ -1,12 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CuentasService } from '../../../services/cuentas.service';
-import { MarcasService } from '../../../services/marcas.service';
-import { IMarca, MsnApiArticulos, IArticulo } from '../../../interfaces/ArticulosInterface';
-import { ArticulosService } from '../../../services/articulos.service';
-import { Platform, PopoverController } from '@ionic/angular';
-import { IFiltrosArticulos } from '../../../interfaces/FiltrosInterfaces';
-import { PopoverComponent } from './../popover/popover.component';
+import { ArticulosfService } from './../../../services/filters/articulosf.service';
+import { IFiltrosArticulos } from './../../../interfaces/FiltrosInterfaces';
+import { IMarca } from './../../../interfaces/ArticulosInterface';
+import { MarcasService } from 'src/app/services/marcas.service';
+import { Platform } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filtros',
@@ -15,72 +12,63 @@ import { PopoverComponent } from './../popover/popover.component';
 })
 export class FiltrosComponent implements OnInit {
 
-  public respuesta: MsnApiArticulos;
-  public articulo: IArticulo;
-  public texto='';
-  articulos: any;
-  cuenta: any;
-  
-  public marca: IMarca[];
+  public marcas: IMarca[];
   public items: string[] = [];
   public precio = 50;
   public rangeVal: string;
   public IFiltros: IFiltrosArticulos = {
+   // precio: { min: 0, max: 0 },
     precios: [],
-    marcas: [],
+    marcas: []
   };
 
-  @Input('seccion') seccion: string;
-
   constructor(public platform: Platform,
-              private mService: MarcasService,
-              private filterAService: ArticulosService,
-              private cService: CuentasService,
-              private articulosService: ArticulosService,
-              private route: ActivatedRoute,
-              public popoverController: PopoverController) {
-
-  this.articulos = this.route.snapshot.paramMap.get('articulo_id');
-
-  
-    }
-  
-    async ngOnInit() {
-      let respuesta = await this.articulosService.getArticulos();
-      this.articulos = respuesta.data;
-      console.log(respuesta);
-        this.cService.userStorageObservable
-      .subscribe ( data => {
-        this.cuenta = data;
-      })
-    }
-    buscar(event) {
-      const busqueda = event.detail.value
-      this.articulosService.buscarArticulos(busqueda).subscribe(data => {
-         console.log(this.texto);
-      });
-    }
-  
-    ionViewWillEnter (){
-      this.cService.userStorageObservable
-        .subscribe ( data => {
-          this.cuenta = data;
-          
-        })
-    }
-
-    async getCuenta() {
-      this.cuenta = await this.cService.getCuentaStorage();
-    }
-
-    async presentPopover(ev: any){
-      const popover = await this.popoverController.create({
-        component: PopoverComponent,
-        event: ev,
-        translucent: true
-      });
-      return await popover.present();
-    }
+              private marcasService: MarcasService,
+              private filterAService: ArticulosfService) { 
+   this.platform.ready().then( () => {
+      this.rangeVal = "50";
+    });
   }
 
+  async ionViewWillEnter(){
+    let respuesta = await this.marcasService.getMarcas();
+    this.marcas = respuesta.data;
+    console.log (respuesta);
+  }
+  changeRange(precio) {
+    console.log(precio.detail.value.lower,':', precio.detail.value.upper);
+   // console.log(this.rangeVal);
+   //this.IFiltros.precio.max = precio.detail.value.upper;
+   //this.IFiltros.precio.min = precio.detail.value.lower;
+   this.IFiltros.precios[0] = precio.detail.value.lower;
+   this.IFiltros.precios[1] = precio.detail.value.upper;
 
+  }
+  async ngOnInit() {
+    let respuesta = await this.marcasService.getMarcas();
+    this.marcas = respuesta.data;
+    console.log (respuesta);
+  }
+
+  async selectmarca(marca, pos){
+    console.log(marca, pos);
+    //
+    let i = this.items.indexOf(marca);
+    if ( i == -1 ){
+      this.items.push(marca);
+    }else {
+      this.items.splice( i, 1 );
+    }
+    console.log(this.items);
+   // let respuesta = await this.marcasService.getArticulos(marca);
+  }
+
+  async aplicar(){
+     this.IFiltros.marcas = this.items;
+
+      console.log (this.IFiltros);
+      let respuesta = await this.filterAService.getFilter(this.IFiltros);
+     //  console.log(respuesta);
+       this.items = [];
+  }
+}

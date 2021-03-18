@@ -25,6 +25,7 @@ class ArticulosController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -67,6 +68,33 @@ class ArticulosController extends Controller
 
     }
 
+    public function editara(Request $request)
+    {
+        $rules = [
+            'nombre_articulo'        => 'required|integer'
+        ];
+
+        #Paso1-. Validación de los campos del usuario
+        $input = $request->all();
+        $validator = Validator::make($input, $rules);
+//        dd($validator->errors());
+        if ($validator->fails()){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Error al rellenar los campos',
+                'errors'=> $validator->errors()
+            ], 200);
+        }
+
+        $articulo = Articulo::update(array(
+            'nombre_articulo'        => $request->input('nombre_articulo')
+        ));
+
+        return response()->json([
+            'status' => 'Correcto.',
+            'message' => 'Articulo actualizado.'], 201);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -96,8 +124,14 @@ class ArticulosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($articuloid)
     {
-        //
+        $data = Articulo::destroy('articulo_id', '=', $articuloid);
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Articulo borrado',
+            'code' => 401,
+            'data' => $data
+        ]);
     }
 }

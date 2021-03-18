@@ -21,7 +21,7 @@ export class CategoriasService {
 
 async getArticulos(categoriaid):Promise<MsnApiCategorias>{
   console.log("categoriaid = ",categoriaid);
-  const ruta = `${ URL }/public/api/admin/categorias/${categoriaid}/articulos`;
+  const ruta = `${ URL }/api/admin/categorias/${categoriaid}/articulos`;
   //this.cabecera(token);
   return new Promise ( resolve => {
     this.http.get<MsnApiCategorias>(ruta)
@@ -33,7 +33,7 @@ async getArticulos(categoriaid):Promise<MsnApiCategorias>{
 }
 
 async getCategorias(): Promise<MsnApiCategorias>{
-  const ruta = `${ URL }/public/api/admin/categorias`;
+  const ruta = `${ URL }/api/admin/categorias`;
   return new Promise ( resolve => {
     this.http.get<MsnApiCategorias>(ruta)
       .subscribe ( respuesta => {
@@ -45,7 +45,7 @@ async getCategorias(): Promise<MsnApiCategorias>{
 agregarc (categoria: ICategoria): Promise<MsnApiAgregarc>{
   console.log(categoria);
 
-  const ruta = `${ URL }/public/api/agregarc`;
+  const ruta = `${ URL }/api/agregarc`;
   const data = categoria;
   console.log (ruta, data);
 

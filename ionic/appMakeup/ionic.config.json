@@ -1,5 +1,7 @@
 {
   "name": "appMakeup",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

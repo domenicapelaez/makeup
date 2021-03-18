@@ -1,3 +1,5 @@
+import { MensajesService } from './../../services/mensajes.service';
+import { ArticulosfService } from './../../services/filters/articulosf.service';
 import { ActivatedRoute } from '@angular/router';
 import { CuentasService } from './../../services/cuentas.service';
 import { ArticulosService } from './../../services/articulos.service';
@@ -18,7 +20,9 @@ export class ArticulosComponent implements OnInit {
 
   constructor(private aService: ArticulosService,
               private cService: CuentasService,
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute,
+              private filterAService: ArticulosfService,
+              private mService: MensajesService) { 
   this.articulos = this.route.snapshot.paramMap.get('articulo_id');
   }
 
@@ -29,6 +33,12 @@ export class ArticulosComponent implements OnInit {
       this.cService.userStorageObservable
     .subscribe ( data => {
       this.cuenta = data;
+
+      this.filterAService.articulosStorageObservable
+      .subscribe (respuesta => {
+        this.articulos = respuesta;
+        console.log (this.articulos);
+      });
     });
   }
 
@@ -39,9 +49,11 @@ export class ArticulosComponent implements OnInit {
       })
   }
   
-  
   async getCuenta() {
       this.cuenta = await this.cService.getCuentaStorage();
   }
 
+  public eliminararticulo(articuloid){
+    this.mService.alertaborrado(articuloid);
+  }
 }

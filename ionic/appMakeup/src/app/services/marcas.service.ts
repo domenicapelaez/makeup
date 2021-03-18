@@ -24,7 +24,7 @@ export class MarcasService {
 
   async getArticulos(marcaid):Promise<MsnApiMarcas>{
     console.log("marcaid = ",marcaid);
-    const ruta = `${ URL }/public/api/admin/marcas/${marcaid}/articulos`;
+    const ruta = `${ URL }/api/admin/marcas/${marcaid}/articulos`;
    // this.cabecera(token);
     return new Promise ( resolve => {
       this.http.get<MsnApiMarcas>(ruta)
@@ -37,7 +37,7 @@ export class MarcasService {
   }
 
  async getMarcas(): Promise<MsnApiMarcas>{
-    const ruta = `${ URL }/public/api/admin/marcas`;
+    const ruta = `${ URL }/api/admin/marcas`;
     return new Promise ( resolve => {
       this.http.get<MsnApiMarcas>(ruta)
         .subscribe ( respuesta => {
@@ -49,7 +49,7 @@ export class MarcasService {
   agregarm (marca: IMarca): Promise<MsnApiAgregarm>{
     console.log(marca);
 
-    const ruta = `${ URL }/public/api/agregarm`;
+    const ruta = `${ URL }/api/agregarm`;
     const data = marca;
     console.log (ruta, data);
 

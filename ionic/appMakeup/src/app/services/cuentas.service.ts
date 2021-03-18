@@ -25,7 +25,7 @@ export class CuentasService {
 
   login (loginUser: ILogin): Promise<MsnApiLogin>{
     const data = loginUser;
-    const ruta = `${ URL }/public/api/login`;
+    const ruta = `${ URL }/api/login`;
     console.log (ruta, data);
     return new Promise( resolve => {
       this.http.post<MsnApiLogin>(ruta, data)
@@ -61,7 +61,7 @@ export class CuentasService {
 
   registro (usuario: ICuenta): Promise<MsnApiRegister>{
 
-    const ruta = `${ URL }/public/api/registro`;
+    const ruta = `${ URL }/api/registro`;
     const data = usuario;
     console.log (ruta, data);
 

@@ -1,6 +1,14 @@
 <app-header></app-header>
 
 <ion-content>
+  <ion-searchbar [(ngModel)]="texto" placeholder="Buscar..." inputmode="text" (ionChange)="buscar($event)" [debounce]="250"></ion-searchbar>
+  
+    <ion-list *ngIf="texto !== ''">
+      <ion-item *ngFor="let articulo of articulos | filtro:texto; index as i" (click)="texto = articulo.nombre_articulo " [routerLink]="[ '/articulos', articulo.articulo_id]">
+          <p *ngIf="articulo.length != 0">{{ articulo.nombre_articulo }}</p>
+      </ion-item>
+  </ion-list>
+  
   <ion-card>
     <img src="assets/img/menu/categorias.png"/>
     <ion-card-title routerLink="/categorias">Categorías</ion-card-title>

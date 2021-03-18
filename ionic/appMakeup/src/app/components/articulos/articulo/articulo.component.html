@@ -21,7 +21,7 @@
         <br> <br>
         <ion-item>
           <span slot="end">{{ articulos.precio }} €</span>
-          <ion-button slot="start" (click)="favorito = !favorito">
+          <ion-button slot="end" (click)="favorite(articulos.articulo_id)">
             <ion-icon color="danger" [name]=" favorito ? 'heart':'heart-outline'"></ion-icon>
         </ion-button>
         </ion-item>

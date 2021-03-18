@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -20,7 +19,6 @@ import { AgregarcComponent } from '../agregarc/agregarc.component';
 import { AgregarmComponent } from '../agregarm/agregarm.component';
 import { AgregaraComponent } from './../agregara/agregara.component';
 import { FiltrosComponent } from './filtros/filtros.component';
-import { PopoverComponent } from './popover/popover.component';
 
 @NgModule({
   declarations: [HeaderComponent,
@@ -36,8 +34,7 @@ import { PopoverComponent } from './popover/popover.component';
     AgregarcComponent,
     AgregarmComponent,
     AgregaraComponent,
-    FiltrosComponent,
-    PopoverComponent],
+    FiltrosComponent],
 
   exports: [HeaderComponent,
     HomeComponent,
@@ -52,8 +49,7 @@ import { PopoverComponent } from './popover/popover.component';
     AgregarcComponent,
     AgregarmComponent,
     AgregaraComponent,
-    FiltrosComponent,
-    PopoverComponent],
+    FiltrosComponent],
 
   imports: [
     CommonModule,

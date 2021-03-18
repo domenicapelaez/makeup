@@ -64,3 +64,23 @@ export interface MsnApiAgregarm {
     errors?: string;
     data?: IMarca;
 }
+
+export interface IFavorito {
+    cuentaid?: number;
+    articuloid?: number;
+}
+
+export interface MsnApiFavoritos{
+    status?: string;
+    message?: string;
+    errors?: string;
+    code?: number;
+    data?: IArticulo;
+}
+
+export interface MsnApiEditara {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: IArticulo;
+}

@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title><h1>Agregar Marca</h1></ion-title>
     <ion-buttons slot="start">
-      <ion-back-button text="Volver" defaultHref="/marcas"></ion-back-button>
+      <ion-back-button text="Volver" defaultHref="/configuracion"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,7 +23,7 @@
               <ion-input required name="logo" type="text" [(ngModel)]="newmarca.logo"></ion-input>
             </ion-item>
 
-          <ion-button expand="full" type="submit">Añadir Marca</ion-button>
+          <ion-button expand="full" type="submit" routerLink="/marcas">Añadir Marca</ion-button>
      </form>
   </ion-card-content>
 </ion-content>

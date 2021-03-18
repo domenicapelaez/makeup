@@ -11,10 +11,12 @@ import { CompraComponent } from './components/comunes/compra/compra.component';
 import { InfoComponent } from './components/comunes/info/info.component';
 import { EmailComponent } from './components/comunes/email/email.component';
 import { EnviosdevolucionesComponent } from './components/comunes/enviosdevoluciones/enviosdevoluciones.component';
-import { FiltrosComponent } from './components/comunes/filtros/filtros.component';
 import { AgregarcComponent } from './components/agregarc/agregarc.component';
 import { AgregarmComponent } from './components/agregarm/agregarm.component';
 import { AgregaraComponent } from './components/agregara/agregara.component';
+import { FiltrosComponent } from './components/comunes/filtros/filtros.component';
+import { ConfComponent } from './components/comunes/conf/conf.component';
+import { ArticuloComponent } from './components/articulos/articulo/articulo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,6 +35,10 @@ const routes: Routes = [
   {
     path: 'articulos',
     loadChildren: () => import('./components/articulos/articulos.module').then(m => m.ArticulosModule)
+  },
+  {
+    path: 'busqueda',
+    loadChildren: () => import('./components/busqueda/busqueda.module').then(m => m.BusquedaModule)
   },
   {
     path: 'home', component: HomeComponent
@@ -68,9 +74,6 @@ const routes: Routes = [
     path: 'email', component: EmailComponent
   },
   {
-    path: 'filtros', component: FiltrosComponent
-  },
-  {
     path: 'agregarc', component: AgregarcComponent
   },
   {
@@ -78,6 +81,15 @@ const routes: Routes = [
   },
   {
     path: 'agregara', component: AgregaraComponent
+  },
+  {
+    path: 'filtros', component: FiltrosComponent
+  },
+  {
+    path: 'configuracion', component: ConfComponent
+  },
+  {
+    path: 'articulos', component: ArticuloComponent
   }
 ];
 @NgModule({

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\filters;
-use App\Model\Articulo;
+use App\Models\Articulo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class ArticulosController extends Controller
 {
     public function filtros(Request $request) {
-        // $categorias = json_decode($request->input('data));
+        // $marcas = json_decode($request->input('data));
         $data = json_decode($request->input('data'), true);
         $precios = $data['precios'];
-        $categorias = $data['marcas'];
+        $marcas = $data['marcas'];
         $articulos = Articulo::select("*")
-                                ->whereIn('Marca', $marcas)
-                                ->where('precio', '>', $precio[0])
+                                //->whereIn('Marca', $marcas)
+                                ->where('precio', '>', $precios[0])
                                 ->where('precio', '<', $precios[1])
                                 ->get();
         return response()->json([
