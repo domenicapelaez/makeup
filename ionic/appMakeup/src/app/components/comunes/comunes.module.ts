@@ -1,3 +1,5 @@
+import { EditaraComponent } from './../editara/editara.component';
+import { ArticuloseComponent } from './../articulose/articulose.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComunesRoutingModule } from './comunes-routing.module';
@@ -17,7 +19,6 @@ import { CompraComponent } from './compra/compra.component';
 import { PipesModule } from './../../pipes/pipes.module';
 import { AgregarcComponent } from '../agregarc/agregarc.component';
 import { AgregarmComponent } from '../agregarm/agregarm.component';
-import { AgregaraComponent } from './../agregara/agregara.component';
 import { FiltrosComponent } from './filtros/filtros.component';
 
 @NgModule({
@@ -33,8 +34,9 @@ import { FiltrosComponent } from './filtros/filtros.component';
     InfoComponent,
     AgregarcComponent,
     AgregarmComponent,
-    AgregaraComponent,
-    FiltrosComponent],
+    FiltrosComponent,
+    ArticuloseComponent,
+    EditaraComponent],
 
   exports: [HeaderComponent,
     HomeComponent,
@@ -48,8 +50,9 @@ import { FiltrosComponent } from './filtros/filtros.component';
     InfoComponent,
     AgregarcComponent,
     AgregarmComponent,
-    AgregaraComponent,
-    FiltrosComponent],
+    FiltrosComponent,
+    ArticuloseComponent,
+    EditaraComponent],
 
   imports: [
     CommonModule,

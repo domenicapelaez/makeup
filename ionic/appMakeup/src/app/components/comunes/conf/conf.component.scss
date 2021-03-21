@@ -1,0 +1,36 @@
+ion-toolbar{
+    --background: none;
+   background-color: #0D0D0D;
+   text-align: end !important;
+   padding: 3px !important;
+}
+h1{
+    color: rgb(253, 253, 253);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+h2{
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
+ion-content{
+    --background: none;
+    background-color: #FFE6BF;
+    align-items: center;
+}
+ion-item{
+    --background: none;
+    --background-activated: none;
+    --background-hover: none;
+    background-color: #FFE6BF;
+    color: black;
+    margin-top: 10px;
+    font-size: 20px;
+}
+ion-icon{
+    color: brown;
+    padding: 7px;
+    font-size: 25px;
+}

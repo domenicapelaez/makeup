@@ -3,3 +3,33 @@ ion-content{
     background-color: #FFE6BF;
     height: 500px;
 }
+ion-toolbar{
+    --background: none;
+    background-color: #0D0D0D;
+}
+ion-card-header{
+    background-color: white;
+}
+ion-card-subtitle{
+    color: black;
+    font-size: 19px;
+}
+ion-card-content{
+    background-color: white;
+    color: black;
+}
+ion-item{
+    --background: none;
+    background-color: white;
+    color: black;
+}
+ion-checkbox{
+    --background: none;
+    background-color: black;
+}
+ion-range {
+    color:black;
+}
+ion-label{
+    font-size: 18px;
+}

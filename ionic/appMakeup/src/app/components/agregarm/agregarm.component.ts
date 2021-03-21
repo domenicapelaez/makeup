@@ -46,10 +46,5 @@ ngOnInit() { }
     console.log(peticion);
     this.mService.alertaInformativa( JSON.stringify(peticion.errors) );
      }
-    
-    }
-
-    pulsar(){
-      this.configService.edicion();
     }
   }

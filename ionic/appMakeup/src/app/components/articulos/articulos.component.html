@@ -9,23 +9,16 @@
 </ion-header>
 
 <ion-content>
-    <ion-card *ngFor="let articulo of articulos; index as i" >
-      <ion-card-title [routerLink]="[ articulo.articulo_id]"> {{articulo.nombre_articulo}}</ion-card-title>
-        <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
+    <ion-card *ngFor="let articulo of articulos; index as i">
+     <br>
+     <ion-card-title > <h3> {{articulo.nombremarca}} </h3> </ion-card-title>
+      <ion-card-title [routerLink]="[ articulo.articulo_id ]"> <h4>{{articulo.nombre_articulo}}</h4> </ion-card-title>
+        <br>
+      <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
         
         <ion-card-content>{{articulo.descripcion}}</ion-card-content>
         <ion-item>
-            <ion-card-subtitle>{{articulo.precio}}€</ion-card-subtitle>
+            <ion-card-subtitle slot="end"><h2>{{articulo.precio}} €</h2></ion-card-subtitle>
         </ion-item>
-        <ion-item>
-          <ion-card-subtitle routerLink="/editara">Editar</ion-card-subtitle>
-      </ion-item>
-      <ion-item>
-        <ion-card-subtitle>
-          <ion-item>
-            <ion-icon name="trash-outline" (click)="eliminararticulo(articulo.articulo_id)"></ion-icon>
-          </ion-item>
-          Eliminar</ion-card-subtitle>
-    </ion-item>
     </ion-card>
 </ion-content>

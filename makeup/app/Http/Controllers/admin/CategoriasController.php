@@ -70,6 +70,7 @@ class CategoriasController extends Controller
             'status' => 'Correcto.',
             'message' => 'Categoria agregada.'], 201);
     }
+        
     /**
      * Show the form for creating a new resource.
      *

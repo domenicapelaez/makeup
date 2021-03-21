@@ -1,31 +1,35 @@
 import { NavController } from '@ionic/angular';
 import { CategoriasService } from './../../services/categorias.service';
+import { MsnApiArticulos, IArticulo } from './../../interfaces/ArticulosInterface';
 import { MensajesService } from './../../services/mensajes.service';
 import { ArticulosfService } from './../../services/filters/articulosf.service';
 import { ActivatedRoute } from '@angular/router';
 import { CuentasService } from './../../services/cuentas.service';
 import { ArticulosService } from './../../services/articulos.service';
-import { MsnApiArticulos, IArticulo } from './../../interfaces/ArticulosInterface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-articulos',
-  templateUrl: './articulos.component.html',
-  styleUrls: ['./articulos.component.scss'],
+  selector: 'app-articulose',
+  templateUrl: './articulose.component.html',
+  styleUrls: ['./articulose.component.scss'],
 })
-export class ArticulosComponent implements OnInit {
+export class ArticuloseComponent implements OnInit {
 
   public respuesta: MsnApiArticulos;
   public articulo: IArticulo;
   public articulos: any;
   cuenta: any;
 
+  public articuloid: string;
+  nombre_articulo: any;
+  descripcion: any;
+
   constructor(private aService: ArticulosService,
+              private catService: CategoriasService,
               private cService: CuentasService,
               private route: ActivatedRoute,
               private filterAService: ArticulosfService,
               private mService: MensajesService,
-              private catService: CategoriasService,
               private navController: NavController) { 
   this.articulos = this.route.snapshot.paramMap.get('articulo_id');
   }

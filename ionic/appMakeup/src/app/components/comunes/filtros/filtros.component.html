@@ -1,8 +1,8 @@
 <ion-app>
   <ion-menu side="start" content-id="main-content">
     <ion-header>
-      <ion-toolbar translucent>
-        <ion-title>Filtrado de Articulos</ion-title>
+      <ion-toolbar>
+        <ion-title>Búsqueda</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
@@ -12,8 +12,8 @@
         </ion-card-header>
         <ion-card-content class="ion-padding" *ngIf="marcas">
             <div id="datos">
-              <ion-label id="min"><span>min: </span>{{ IFiltros.precios[0] }}</ion-label>
-              <ion-label id="max"><span>max: </span>{{ IFiltros.precios[1] }}</ion-label>
+              <ion-label id="min"><span>Min: </span> {{ IFiltros.precios[0] }}</ion-label>
+              <ion-label id="max"><span>Max: </span> {{ IFiltros.precios[1] }}</ion-label>
             </div>
             <ion-range  min="3" max="70" pin="true" dual-knobs  (ionChange)="changeRange($event)">
               <ion-icon size="small" slot="start" name="remove-outline"></ion-icon>
@@ -36,7 +36,7 @@
   <div class="ion-page" id="main-content">
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="secondary" routerLink="/busqueda">
+        <ion-buttons slot="secondary">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Filtros</ion-title>

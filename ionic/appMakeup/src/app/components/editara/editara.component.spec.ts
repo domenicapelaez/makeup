@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { AgregaraComponent } from './agregara.component';
+import { EditaraComponent } from './editara.component';
 
-describe('AgregaraComponent', () => {
-  let component: AgregaraComponent;
-  let fixture: ComponentFixture<AgregaraComponent>;
+describe('EditaraComponent', () => {
+  let component: EditaraComponent;
+  let fixture: ComponentFixture<EditaraComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgregaraComponent ],
+      declarations: [ EditaraComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AgregaraComponent);
+    fixture = TestBed.createComponent(EditaraComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

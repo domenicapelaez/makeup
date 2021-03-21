@@ -2,7 +2,7 @@ import { ArticulosfService } from './../../../services/filters/articulosf.servic
 import { IFiltrosArticulos } from './../../../interfaces/FiltrosInterfaces';
 import { IMarca } from './../../../interfaces/ArticulosInterface';
 import { MarcasService } from 'src/app/services/marcas.service';
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -24,7 +24,8 @@ export class FiltrosComponent implements OnInit {
 
   constructor(public platform: Platform,
               private marcasService: MarcasService,
-              private filterAService: ArticulosfService) { 
+              private filterAService: ArticulosfService,
+              private navCtrl: NavController) { 
    this.platform.ready().then( () => {
       this.rangeVal = "50";
     });
@@ -70,5 +71,6 @@ export class FiltrosComponent implements OnInit {
       let respuesta = await this.filterAService.getFilter(this.IFiltros);
      //  console.log(respuesta);
        this.items = [];
+       this.navCtrl.navigateRoot('articulos', { animated: true } );
   }
 }

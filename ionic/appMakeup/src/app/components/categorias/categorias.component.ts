@@ -20,8 +20,6 @@ export class CategoriasComponent implements OnInit {
   categoria: any;
   rol: string;
   tipo: string;
-  isActiveConfig: boolean = false;
-  isClickConfig: boolean = false;
   isAdmin: boolean = false;
 
   constructor(private categoriasService: CategoriasService, 
@@ -37,8 +35,4 @@ export class CategoriasComponent implements OnInit {
        this.categorias = respuesta.data;
        console.log(respuesta);
      }
-
-    pulsar(){
-      this.configService.edicion();
-    }
    }

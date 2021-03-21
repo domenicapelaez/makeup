@@ -4,7 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from './../../environments/environment.prod';
-import { MsnApiArticulos, IArticulo, MsnApiEditara } from './../interfaces/ArticulosInterface';
+import { MsnApiArticulos, IArticulo, MsnApiEditara, MsnApiAgregara } from './../interfaces/ArticulosInterface';
 
 
 const URL = environment.url;
@@ -48,15 +48,15 @@ export class ArticulosService {
     return this.http.get(`http://makeup.test/makeup/public/api/admin/articulos`)
   }
 
-  actualizara (articulo: IArticulo): Promise<MsnApiEditara>{
+  agregara (articulo: IArticulo): Promise<MsnApiAgregara>{
     console.log(articulo);
-
-    const ruta = `${ URL }/api/editara`;
+  
+    const ruta = `${ URL }/public/api/agregara`;
     const data = articulo;
     console.log (ruta, data);
-
+  
     return new Promise ( resolve => {
-      this.http.post<MsnApiEditara>(ruta, data)
+      this.http.post<MsnApiAgregara>(ruta, data)
         .subscribe (respuesta => {
           if (respuesta.status == 'success'){
             resolve(respuesta)
@@ -67,16 +67,30 @@ export class ArticulosService {
         }
       });
   });
-}
-  async borrar(articuloid): Promise<MsnApiArticulos>{
-    const ruta = `${ URL }/api/articulos/${articuloid}/remove`;
+  } 
 
+  async borrar(articuloid): Promise<MsnApiArticulos>{
+    const ruta = `${ URL }/public/api/articulos/${articuloid}/remove`;
+    console.log(ruta);
+    return new Promise ( resolve => {
+      this.http.get<MsnApiArticulos>(ruta)
+      .subscribe(data => {
+        console.log(data);
+        resolve(data);
+      });
+  });
+}
+
+async actualizar(articuloid, nombre_articulo: string, descripcion: string): Promise<MsnApiArticulos>{
+  const ruta =  `${ URL }/public/api/admin/${articuloid}/actualizar`;
+  const data = { nombre_articulo, descripcion};
+  console.log(ruta);
   return new Promise ( resolve => {
-    this.http.get<MsnApiArticulos>(ruta)
+    this.http.put<MsnApiArticulos>(ruta,data)
     .subscribe(data => {
       console.log(data);
-      resolve(data);
+      resolve(data);        
     });
-  });
+});
 }
 }

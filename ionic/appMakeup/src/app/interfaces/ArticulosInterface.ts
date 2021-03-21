@@ -52,6 +52,13 @@ export interface MsnApiArticulos {
     data?: IArticulo[];
 }
 
+export interface MsnApiAgregara {
+    status?: string;
+    message?: string;
+    errors?: string;
+    data?: IArticulo;
+}
+
 export interface MsnApiAgregarc {
     status?: string;
     message?: string;

@@ -13,6 +13,8 @@ export class MensajesService {
 
   async alertaInformativa(message: string){
     const alert = await this.alertController.create({
+      cssClass: 'try-again-alert',
+      animated: true,
       message,
       buttons: ['OK']
     });

@@ -1,3 +1,5 @@
+import { EditaraComponent } from './components/editara/editara.component';
+import { ArticuloseComponent } from './components/articulose/articulose.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/comunes/home/home.component';
@@ -13,7 +15,6 @@ import { EmailComponent } from './components/comunes/email/email.component';
 import { EnviosdevolucionesComponent } from './components/comunes/enviosdevoluciones/enviosdevoluciones.component';
 import { AgregarcComponent } from './components/agregarc/agregarc.component';
 import { AgregarmComponent } from './components/agregarm/agregarm.component';
-import { AgregaraComponent } from './components/agregara/agregara.component';
 import { FiltrosComponent } from './components/comunes/filtros/filtros.component';
 import { ConfComponent } from './components/comunes/conf/conf.component';
 import { ArticuloComponent } from './components/articulos/articulo/articulo.component';
@@ -80,9 +81,6 @@ const routes: Routes = [
     path: 'agregarm', component: AgregarmComponent
   },
   {
-    path: 'agregara', component: AgregaraComponent
-  },
-  {
     path: 'filtros', component: FiltrosComponent
   },
   {
@@ -90,6 +88,12 @@ const routes: Routes = [
   },
   {
     path: 'articulos', component: ArticuloComponent
+  },
+  {
+    path: 'articulose', component: ArticuloseComponent
+  },
+  {
+    path: 'editara', component: EditaraComponent
   }
 ];
 @NgModule({

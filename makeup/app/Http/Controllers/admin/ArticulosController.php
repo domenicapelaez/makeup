@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ArticulosController extends Controller
 {
@@ -68,10 +69,12 @@ class ArticulosController extends Controller
 
     }
 
-    public function editara(Request $request)
+    public function agregara(Request $request)
     {
         $rules = [
-            'nombre_articulo'        => 'required|integer'
+            'articulo_id'        => 'required|integer',
+            'nombre_articulo'    => 'required',
+            'descripcion'        => 'required'
         ];
 
         #Paso1-. Validación de los campos del usuario
@@ -86,15 +89,29 @@ class ArticulosController extends Controller
             ], 200);
         }
 
-        $articulo = Articulo::update(array(
-            'nombre_articulo'        => $request->input('nombre_articulo')
+        $articulo = Articulo::create(array(
+            'articulo_id'        => $request->input('articulo_id'),
+            'nombre_articulo'    => $request->input('nombre_articulo'),
+            'descripcion'        => $request->input('descripcion')
         ));
 
         return response()->json([
             'status' => 'Correcto.',
-            'message' => 'Articulo actualizado.'], 201);
+            'message' => 'Articulo agregado.'], 201);
     }
 
+    public function actualizar(Articulo $articulo, Request $request, $articuloid)
+    {
+        $articulo = Articulo::where('articulo_id', $articuloid)->update($request->only('articulo_id','nombre_articulo', 'descripcion'));
+        
+        
+        if ($articulo === null) {
+            return response()->json('Company Not found', 404);
+        }
+        
+        return response()->json($articulo, 200);
+        
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -125,13 +142,20 @@ class ArticulosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($articuloid)
-    {
-        $data = Articulo::destroy('articulo_id', '=', $articuloid);
+    {   
+        $result = Articulo::where('articulo_id', $articuloid)->delete();
+        //$articulo = Articulo::find($articuloid);
+    //    $result = $articulo[0]->delete();
+        if ($result == 1){
+            $mensaje = "Articulo ". $articuloid. " eliminado correctamente";
+        }else{
+            $mensaje = "Articulo ". $articuloid. " No eliminado";
+        };
+
         return response()->json([
             'status' => 'success',
-            'message' => 'Articulo borrado',
+            'message' => $mensaje,
             'code' => 401,
-            'data' => $data
         ]);
     }
 }

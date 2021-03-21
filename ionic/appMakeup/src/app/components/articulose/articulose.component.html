@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver" defaultHref="/configuracion">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title><h1>Artículos</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngFor="let articulo of articulos; index as i" >
+      <ion-item>
+        <ion-icon name="pencil-outline" routerLink="/editara" slot="end"></ion-icon> 
+      <ion-icon name="trash-outline" (click)="eliminararticulo(articulo.articulo_id)" slot="end"></ion-icon>
+  </ion-item>
+      <br>
+      <ion-card-title> {{articulo.nombre_articulo}}</ion-card-title>
+      <br>
+        <img src="http://makeup.test/makeup/public/img/articulos/{{articulo.logo}}" alt="">
+        
+        <ion-card-content>{{articulo.descripcion}}</ion-card-content>
+        <ion-item>
+            <ion-card-subtitle slot="end"> <h2> {{articulo.precio}} € </h2></ion-card-subtitle>
+        </ion-item>
+    </ion-card>
+</ion-content>

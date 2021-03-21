@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Volver" defaultHref="/articulose">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title><h1>Editar Articulo</h1></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card-content>
+      <ion-text>{{articulo_id}}</ion-text>
+      <form (ngSubmit)="actualizar(fEditArticulo)" #fEditArticulo="ngForm">
+        <ion-item>
+          <ion-label position="floating">Id del Articulo</ion-label>
+          <ion-input required name="articulo_id" type="text" [(ngModel)]="articulo_id"></ion-input>
+      </ion-item>
+          <ion-item>
+              <ion-label position="floating">Nombre del Articulo</ion-label>
+              <ion-input required name="nombre_categoria" type="text" [(ngModel)]="nombre_articulo"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label position="floating">Descripcion</ion-label>
+              <ion-input required name="descripcion" type="text" [(ngModel)]="descripcion"></ion-input>
+          </ion-item>
+          <ion-button expand="full" type="submit" routerLink="/articulose">Editar Articulo</ion-button>
+      </form>
+  </ion-card-content>
+</ion-content>
