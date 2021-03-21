@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IFavorito, MsnApiFavoritos } from './../interfaces/ArticulosInterface';
 import { Injectable } from '@angular/core';

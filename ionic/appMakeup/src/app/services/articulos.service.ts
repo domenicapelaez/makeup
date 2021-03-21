@@ -3,7 +3,7 @@ import { CuentasService } from './cuentas.service';
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment';
 import { MsnApiArticulos, IArticulo, MsnApiEditara, MsnApiAgregara } from './../interfaces/ArticulosInterface';
 
 
@@ -24,7 +24,7 @@ export class ArticulosService {
               private storage: Storage) { }
 
   async getArticulos(): Promise<MsnApiArticulos>{
-    const ruta = `${ URL }/public/api/admin/articulos`;
+    const ruta = `${ URL }/api/admin/articulos`;
     return new Promise ( resolve => {
       this.http.get<MsnApiArticulos>(ruta)
         .subscribe ( respuesta => {
@@ -35,7 +35,7 @@ export class ArticulosService {
 
   async showArticulos(articuloid): Promise<MsnApiArticulos>{
     console.log('Articuloid =', articuloid);
-    const ruta = `${ URL }/public/api/admin/articulos/${articuloid}`;
+    const ruta = `${ URL }/api/admin/articulos/${articuloid}`;
     return new Promise ( resolve => {
       this.http.get<MsnApiArticulos>(ruta)
       .subscribe (respuesta => {
@@ -45,13 +45,13 @@ export class ArticulosService {
   }
 
   public buscarArticulos( articulos: string) {
-    return this.http.get(`http://makeup.test/makeup/public/api/admin/articulos`)
+    return this.http.get(`http://rosepowder.online/index.php/api/admin/articulos`)
   }
 
   agregara (articulo: IArticulo): Promise<MsnApiAgregara>{
     console.log(articulo);
   
-    const ruta = `${ URL }/public/api/agregara`;
+    const ruta = `${ URL }/api/agregara`;
     const data = articulo;
     console.log (ruta, data);
   
@@ -70,7 +70,7 @@ export class ArticulosService {
   } 
 
   async borrar(articuloid): Promise<MsnApiArticulos>{
-    const ruta = `${ URL }/public/api/articulos/${articuloid}/remove`;
+    const ruta = `${ URL }/api/articulos/${articuloid}/remove`;
     console.log(ruta);
     return new Promise ( resolve => {
       this.http.get<MsnApiArticulos>(ruta)
@@ -82,7 +82,7 @@ export class ArticulosService {
 }
 
 async actualizar(articuloid, nombre_articulo: string, descripcion: string): Promise<MsnApiArticulos>{
-  const ruta =  `${ URL }/public/api/admin/${articuloid}/actualizar`;
+  const ruta =  `${ URL }/api/admin/${articuloid}/actualizar`;
   const data = { nombre_articulo, descripcion};
   console.log(ruta);
   return new Promise ( resolve => {

@@ -20,7 +20,7 @@ export class CuentasService {
   constructor(private http: HttpClient, private storage: Storage){ }
 
   public getCuentas(){
-    return this.http.get('http://makeup.test/makeup/public/api/admin/cuentas');
+    return this.http.get('http://rosepowder.online/index.php/api/admin/cuentas');
   }
 
   login (loginUser: ILogin): Promise<MsnApiLogin>{
