@@ -69,9 +69,9 @@ export class ArticuloseComponent implements OnInit {
     console.log(articuloid);
     let respuesta = await this.aService.borrar(articuloid);
     console.log(respuesta);
-    if (respuesta.status=='success'){
+    /*if (respuesta.status=='success'){
       this.mService.alertaborrado(articuloid);
-    }
+    } */
   }
 
 }

@@ -27,12 +27,12 @@ export class LoginComponent implements OnInit {
     // recordemos que 'peticion' es una PROMESA 
     const peticion = await this.cService.login(this.loginUser);
     
-    if ( peticion.status == 'success' ){
+    /*if ( peticion.status == 'success' ){
       // navegar al home
       this.navCtrl.navigateRoot('usuario', { animated: true } );
     }else {
       this.mService.alertaInformativa('Usuario/Password incorrectos');
-    }
+    } */
   }
 
   ngOnInit() {}
