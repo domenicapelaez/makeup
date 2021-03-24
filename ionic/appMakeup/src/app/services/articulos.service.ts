@@ -81,9 +81,9 @@ export class ArticulosService {
   });
 }
 
-async actualizar(articuloid, nombre_articulo: string, descripcion: string): Promise<MsnApiArticulos>{
+async actualizar(articuloid, nombre_articulo: string, descripcion: string, categoriaid: string, marcaid: string, precio: number, logo: string): Promise<MsnApiArticulos>{
   const ruta =  `${ URL }/api/admin/${articuloid}/actualizar`;
-  const data = { nombre_articulo, descripcion};
+  const data = { nombre_articulo, descripcion, categoriaid, marcaid, precio, logo};
   console.log(ruta);
   return new Promise ( resolve => {
     this.http.put<MsnApiArticulos>(ruta,data)

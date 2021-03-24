@@ -1,4 +1,3 @@
-import { EditaraComponent } from './components/editara/editara.component';
 import { ArticuloseComponent } from './components/articulose/articulose.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -91,9 +90,6 @@ const routes: Routes = [
   },
   {
     path: 'articulose', component: ArticuloseComponent
-  },
-  {
-    path: 'editara', component: EditaraComponent
   }
 ];
 @NgModule({

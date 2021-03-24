@@ -66,10 +66,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('admin/usuarios', [UsuariosController::class, 'usuario']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('user', [AuthController::class, 'getUser']);
-    Route::get('articulos/{articuloid}/remove',[ ArticulosController::class, 'destroy' ]);
-    Route::put('admin/{articuloid}/actualizar', [ArticulosController::class,'actualizar']);
-    
+
 });
 
 Route::post('admin/newfavoritos', [FavoritosController::class, 'newfavorito']);
 Route::get('admin/favoritos', [FavoritosController::class, 'favoritos']);
+Route::get('articulos/{articuloid}/remove',[ ArticulosController::class, 'destroy' ]);
+Route::put('admin/{articuloid}/actualizar', [ArticulosController::class,'actualizar']);

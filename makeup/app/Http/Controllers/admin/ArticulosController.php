@@ -74,7 +74,11 @@ class ArticulosController extends Controller
         $rules = [
             'articulo_id'        => 'required|integer',
             'nombre_articulo'    => 'required',
-            'descripcion'        => 'required'
+            'descripcion'        => 'required',
+            'categoriaid   '     => 'required',
+            'precio'             => 'required',
+            'logo'               => 'required'
+
         ];
 
         #Paso1-. Validación de los campos del usuario
@@ -92,7 +96,11 @@ class ArticulosController extends Controller
         $articulo = Articulo::create(array(
             'articulo_id'        => $request->input('articulo_id'),
             'nombre_articulo'    => $request->input('nombre_articulo'),
-            'descripcion'        => $request->input('descripcion')
+            'descripcion'        => $request->input('descripcion'),
+            'categoriaid'        => $request->input('categoriaid'),
+            'marcaid'            => $request->input('marcaid'),
+            'precio '            => $request->input('precio'),
+            'logo'               => $request->input('logo')
         ));
 
         return response()->json([

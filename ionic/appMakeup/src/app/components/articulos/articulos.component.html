@@ -10,7 +10,9 @@
 
 <ion-content>
     <ion-card *ngFor="let articulo of articulos; index as i">
-     <br>
+      <ion-icon name="pencil-outline" [routerLink]="[ 'edit', articulo.articulo_id]"></ion-icon>
+      <ion-icon name="trash-outline" (click)="eliminararticulo(articulo.articulo_id)"></ion-icon>
+      <br>
      <ion-card-title > <h3> {{articulo.nombremarca}} </h3> </ion-card-title>
       <ion-card-title [routerLink]="[ articulo.articulo_id ]"> <h4>{{articulo.nombre_articulo}}</h4> </ion-card-title>
         <br>
@@ -20,5 +22,6 @@
         <ion-item>
             <ion-card-subtitle slot="end"><h2>{{articulo.precio}} €</h2></ion-card-subtitle>
         </ion-item>
+        
     </ion-card>
 </ion-content>

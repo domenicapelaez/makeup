@@ -24,7 +24,23 @@
               <ion-label position="floating">Descripcion</ion-label>
               <ion-input required name="descripcion" type="text" [(ngModel)]="descripcion"></ion-input>
           </ion-item>
-          <ion-button expand="full" type="submit" routerLink="/articulose">Editar Articulo</ion-button>
+          <ion-item>
+            <ion-label position="floating">Categoria Id</ion-label>
+            <ion-input required name="categoriaid" type="text" [(ngModel)]="categoriaid"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Marca Id</ion-label>
+          <ion-input required name="marcaid" type="text" [(ngModel)]="marcaid"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input required name="precio" type="number" [(ngModel)]="precio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Logo</ion-label>
+      <ion-input required name="precio" type="text" [(ngModel)]="logo"></ion-input>
+  </ion-item>
+          <ion-button expand="full" type="submit" routerLink="/articulos">Editar Articulo</ion-button>
       </form>
   </ion-card-content>
 </ion-content>

@@ -1,4 +1,3 @@
-import { EditaraComponent } from './../editara/editara.component';
 import { ArticuloseComponent } from './../articulose/articulose.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -35,8 +34,7 @@ import { FiltrosComponent } from './filtros/filtros.component';
     AgregarcComponent,
     AgregarmComponent,
     FiltrosComponent,
-    ArticuloseComponent,
-    EditaraComponent],
+    ArticuloseComponent],
 
   exports: [HeaderComponent,
     HomeComponent,
@@ -51,8 +49,7 @@ import { FiltrosComponent } from './filtros/filtros.component';
     AgregarcComponent,
     AgregarmComponent,
     FiltrosComponent,
-    ArticuloseComponent,
-    EditaraComponent],
+    ArticuloseComponent],
 
   imports: [
     CommonModule,

@@ -20,6 +20,11 @@ export class ArticulosComponent implements OnInit {
   public articulos: any;
   cuenta: any;
 
+  rol: string;
+  usuario: string;
+  tipo: string;
+  isAdmin: boolean = false;
+
   constructor(private aService: ArticulosService,
               private cService: CuentasService,
               private route: ActivatedRoute,
