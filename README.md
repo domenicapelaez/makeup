@@ -1,2 +1,3 @@
 # makeup
-Mi proyecto
+
+LARAVEL + IONIC
